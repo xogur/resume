@@ -36,6 +36,7 @@ export const resume = {
     role: "Backend Developer",
     currentPosition: "UXROOM 백엔드 개발자",
     tagline: "Java/Spring 기반 실무형 서버 개발자",
+    photo: "/profile.jpg",
     summary:
       "운영 DB 이관, 배치 자동화, 모니터링, CI/CD/NCP 인프라, 예약 동시성 제어, 실시간 AI 대화 백엔드를 경험했습니다.",
   },

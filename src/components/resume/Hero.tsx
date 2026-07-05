@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ContactLink, Highlight } from "@/data/resume";
 
 type HeroProps = {
@@ -6,6 +7,7 @@ type HeroProps = {
     role: string;
     currentPosition: string;
     tagline: string;
+    photo: string;
     summary: string;
   };
   contacts: ContactLink[];
@@ -15,13 +17,22 @@ type HeroProps = {
 export function Hero({ profile, contacts, highlights }: HeroProps) {
   return (
     <header className="hero">
+      <div className="portrait-wrap">
+        <Image
+          src={profile.photo}
+          alt={`${profile.name} 프로필 사진`}
+          width={132}
+          height={176}
+          priority
+          className="portrait"
+        />
+      </div>
       <div className="hero-copy">
         <p className="hero-kicker">{profile.currentPosition}</p>
         <h1>{profile.name}</h1>
         <p className="hero-role">
           {profile.role} · {profile.tagline}
         </p>
-        <p className="hero-summary">{profile.summary}</p>
         <div className="contact-row" aria-label="주요 연락처">
           {contacts.map((contact) =>
             contact.href ? (
@@ -37,6 +48,7 @@ export function Hero({ profile, contacts, highlights }: HeroProps) {
             ),
           )}
         </div>
+        <p className="hero-summary">{profile.summary}</p>
       </div>
       <div className="highlight-grid" aria-label="핵심 성과">
         {highlights.map((highlight) => (
