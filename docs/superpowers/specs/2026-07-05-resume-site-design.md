@@ -103,7 +103,8 @@ The single page should use this section order:
    - UXROOM, Backend Developer, 2025.11 - Present
    - Bullets focused on production outcomes.
 4. Selected Projects
-   - Each project uses `Problem / Action / Result`.
+   - Each project uses `핵심 역할 / 기술 포인트 / 성과`.
+   - Avoid forcing every project into a problem statement when the stronger signal is ownership, technical judgment, and measurable impact.
    - Projects:
      - 365MC DB Migration
      - Hospital Operations Monitoring and Performance Improvement
@@ -138,7 +139,7 @@ The resume data must include:
 - Experience:
   - UXROOM bullet points from the Canva resume, edited for readability but not inflated.
 - Projects:
-  - Four selected projects, each written as concise problem/action/result entries.
+  - Four selected projects, each written as concise role/technical-point/impact entries.
 - Skills:
   - Grouped by role as listed in Information Architecture.
 

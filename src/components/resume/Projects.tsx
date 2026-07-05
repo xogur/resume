@@ -17,16 +17,16 @@ export function Projects({ projects }: ProjectsProps) {
             </div>
             <dl>
               <div>
-                <dt>문제</dt>
-                <dd>{project.problem}</dd>
+                <dt>핵심 역할</dt>
+                <dd>{project.contribution}</dd>
               </div>
               <div>
-                <dt>조치</dt>
-                <dd>{project.action}</dd>
+                <dt>기술 포인트</dt>
+                <dd>{project.technicalPoint}</dd>
               </div>
               <div>
-                <dt>결과</dt>
-                <dd>{project.result}</dd>
+                <dt>성과</dt>
+                <dd>{project.impact}</dd>
               </div>
             </dl>
           </article>
