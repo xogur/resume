@@ -255,9 +255,16 @@ export const resume = {
       impact: "특정 태블릿 호환성 문제를 발견했고 주요 목록 쿼리 응답 시간을 최대 97% 단축했습니다.",
     },
     {
+      title: "울주 AI센터 홈페이지·예약·인프라",
+      subtitle: "NCP Infra · Reservation API · GitHub Actions",
+      contribution: "울주 AI센터 홈페이지의 NCP 클라우드 기반 인프라를 단독 구축하고 예약 기능 백엔드 구현을 맡았습니다.",
+      technicalPoint: "NCP Load Balancer -> PIOLINK -> 서버 흐름과 ACG 정책을 구성하고, 예약 API에는 낙관적 락과 요청 로그를 적용했습니다.",
+      impact: "서비스 배포 기반을 마련하고 동일 슬롯 중복 예약 방지와 실패 원인 추적이 가능한 예약 흐름을 구현했습니다.",
+    },
+    {
       title: "실시간 AI 비밀 대화",
       subtitle: "울주 AI센터 연계 프로젝트 · Realtime AI Voice",
-      contribution: "울주 AI센터 홈페이지와 별도인 연계 프로젝트에서 실시간 AI 대화 백엔드 파이프라인을 구현했습니다.",
+      contribution: "울주 AI센터 홈페이지와 별도인 연계 프로젝트에서 실시간 AI 비밀 대화 백엔드 파이프라인을 구현했습니다.",
       technicalPoint: "STT -> LLM -> TTS -> WebSocket 흐름에서 응답 생성과 음성 재생 시작까지의 지연을 줄이는 구조로 최적화했습니다.",
       impact: "사용자 발화 후 TTS 재생까지의 평균 지연을 500ms 미만으로 낮춰 실시간 대화감을 확보했습니다.",
     },
@@ -970,18 +977,23 @@ a {
 
 .project-card dl div {
   display: grid;
-  grid-template-columns: 54px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: minmax(86px, max-content) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
 }
 
 .project-card dt {
   color: var(--accent-strong);
   font-weight: 800;
+  line-height: 1.55;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .project-card dd {
   margin: 0;
   color: var(--muted);
+  min-width: 0;
 }
 
 .skill-grid {

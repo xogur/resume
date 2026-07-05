@@ -108,6 +108,7 @@ The single page should use this section order:
    - Projects:
      - 365MC DB Migration
      - Hospital Operations Monitoring and Performance Improvement
+     - Ulju AI Center Website, Reservation API, and NCP Infrastructure
      - Realtime AI Secret Conversation, one project within 울주 AI센터 and separate from the 울주 AI센터 website
      - Airflow-Based Hospital Operations Data Automation
 5. Skills
@@ -139,7 +140,8 @@ The resume data must include:
 - Experience:
   - UXROOM bullet points from the Canva resume, edited for readability but not inflated.
 - Projects:
-  - Four selected projects, each written as concise role/technical-point/impact entries.
+  - Five selected projects, each written as concise role/technical-point/impact entries.
+  - Keep 울주 AI센터 homepage/reservation/infrastructure separate from 실시간 AI 비밀 대화 so the resume does not collapse distinct work into one project.
 - Skills:
   - Grouped by role as listed in Information Architecture.
 

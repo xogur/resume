@@ -304,19 +304,24 @@ a {
 
 .project-card dl div {
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  gap: 13px;
+  grid-template-columns: minmax(86px, max-content) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
 }
 
 .project-card dt {
   color: var(--accent);
   font-size: 0.82rem;
   font-weight: 900;
+  line-height: 1.55;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .project-card dd {
   margin: 0;
   color: #37332f;
+  min-width: 0;
 }
 
 .skill-grid {
