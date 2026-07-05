@@ -74,7 +74,7 @@ The page should prioritize scan speed and trust. It should lead with:
 - `Backend Developer`
 - `UXROOM 백엔드 개발자 · Java/Spring 기반 실무형 서버 개발자`
 - A concise positioning line:
-  `운영 DB 이관, 배치 자동화, 모니터링, CI/CD/NCP 인프라, 예약 동시성 제어, 실시간 AI 대화 백엔드를 경험했습니다.`
+  `운영 DB 이관, 배치 자동화, 모니터링, CI/CD/NCP 인프라, 예약 동시성 제어, 실시간 AI 비밀 대화 백엔드를 경험했습니다.`
 
 The first viewport must include four quantified proof points:
 
@@ -85,7 +85,7 @@ The first viewport must include four quantified proof points:
 3. `17개 Airflow DAG 자동화`
    - Method note: `수동 SQL·스크립트 운영 업무 스케줄링`
 4. `TTS 재생 평균 500ms 미만`
-   - Method note: `STT -> LLM -> TTS -> WebSocket 저지연 파이프라인`
+   - Method note: `실시간 AI 비밀 대화의 STT -> LLM -> TTS -> WebSocket 저지연 파이프라인`
 
 ## Information Architecture
 
@@ -98,7 +98,7 @@ The single page should use this section order:
    - Batch automation and operational monitoring
    - NCP infrastructure and CI/CD automation
    - Concurrency control and failure tracing
-   - Realtime AI conversation backend
+   - Realtime AI secret conversation backend
 3. Experience
    - UXROOM, Backend Developer, 2025.11 - Present
    - Bullets focused on production outcomes.
@@ -107,7 +107,7 @@ The single page should use this section order:
    - Projects:
      - 365MC DB Migration
      - Hospital Operations Monitoring and Performance Improvement
-     - Ulju AI Center Website, Reservation, and Voice Counseling Backend
+     - Realtime AI Secret Conversation, one project within 울주 AI센터 and separate from the 울주 AI센터 website
      - Airflow-Based Hospital Operations Data Automation
 5. Skills
    - Core Backend: Java, Spring Boot, Python, FastAPI, NestJS, Next.js, WebSocket
