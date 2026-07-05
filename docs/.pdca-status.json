@@ -1,0 +1,41 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-07-05T13:25:27.777Z",
+  "activeFeatures": [
+    "이력서"
+  ],
+  "primaryFeature": "이력서",
+  "features": {
+    "이력서": {
+      "phase": "do",
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {}
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Starter",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-07-05T13:25:27.735Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-07-05T13:25:27.777Z"
+  },
+  "history": [
+    {
+      "feature": "이력서",
+      "from": "design",
+      "to": "do",
+      "timestamp": "2026-07-05T13:25:27.776Z"
+    },
+    {
+      "feature": "이력서",
+      "action": "phase_complete",
+      "phase": "design",
+      "nextPhase": "do",
+      "timestamp": "2026-07-05T13:25:27.777Z"
+    }
+  ]
+}
