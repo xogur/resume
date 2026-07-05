@@ -1,16 +1,17 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-07-05T13:25:27.777Z",
+  "lastUpdated": "2026-07-05T14:04:50.749Z",
   "activeFeatures": [
     "이력서"
   ],
   "primaryFeature": "이력서",
   "features": {
     "이력서": {
-      "phase": "do",
+      "phase": "completed",
       "matchRate": null,
       "iterationCount": 0,
-      "documents": {}
+      "documents": {},
+      "completedAt": "2026-07-05T14:04:50.747Z"
     }
   },
   "pipeline": {
@@ -21,7 +22,7 @@
   "session": {
     "startedAt": "2026-07-05T13:25:27.735Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-07-05T13:25:27.777Z"
+    "lastActivity": "2026-07-05T14:04:50.749Z"
   },
   "history": [
     {
@@ -36,6 +37,52 @@
       "phase": "design",
       "nextPhase": "do",
       "timestamp": "2026-07-05T13:25:27.777Z"
+    },
+    {
+      "feature": "이력서",
+      "from": "do",
+      "to": "check",
+      "timestamp": "2026-07-05T13:41:55.733Z"
+    },
+    {
+      "feature": "이력서",
+      "action": "phase_complete",
+      "phase": "do",
+      "nextPhase": "check",
+      "timestamp": "2026-07-05T13:41:55.734Z"
+    },
+    {
+      "feature": "이력서",
+      "from": "check",
+      "to": "act",
+      "timestamp": "2026-07-05T13:44:39.833Z"
+    },
+    {
+      "feature": "이력서",
+      "action": "phase_complete",
+      "phase": "check",
+      "nextPhase": "act",
+      "timestamp": "2026-07-05T13:44:39.835Z"
+    },
+    {
+      "feature": "이력서",
+      "from": "act",
+      "to": "report",
+      "timestamp": "2026-07-05T13:51:39.346Z"
+    },
+    {
+      "feature": "이력서",
+      "action": "phase_complete",
+      "phase": "act",
+      "nextPhase": "report",
+      "timestamp": "2026-07-05T13:51:39.347Z"
+    },
+    {
+      "feature": "이력서",
+      "action": "phase_complete",
+      "phase": "report",
+      "nextPhase": "completed",
+      "timestamp": "2026-07-05T14:04:50.749Z"
     }
   ]
 }

@@ -31,3 +31,7 @@ Desktop.ini
 *.swp
 *.swo
 *~
+
+# local agent scratch files
+.superpowers/sdd/task-*-brief.md
+work/
