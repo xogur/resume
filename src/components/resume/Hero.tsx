@@ -8,6 +8,7 @@ type HeroProps = {
     currentPosition: string;
     tagline: string;
     photo: string;
+    headline: string;
     summary: string;
   };
   contacts: ContactLink[];
@@ -17,39 +18,44 @@ type HeroProps = {
 export function Hero({ profile, contacts, highlights }: HeroProps) {
   return (
     <header className="hero">
-      <div className="portrait-wrap">
+      <div className="hero-copy">
+        <p className="hero-kicker">{profile.currentPosition}</p>
+        <h1>{profile.headline}</h1>
+        <p className="hero-summary">{profile.summary}</p>
+      </div>
+
+      <aside className="hero-profile" aria-label="프로필 요약">
         <Image
           src={profile.photo}
           alt={`${profile.name} 프로필 사진`}
           width={132}
-          height={176}
+          height={132}
           priority
           className="portrait"
         />
-      </div>
-      <div className="hero-copy">
-        <p className="hero-kicker">{profile.currentPosition}</p>
-        <h1>{profile.name}</h1>
-        <p className="hero-role">
-          {profile.role} · {profile.tagline}
-        </p>
+        <div>
+          <strong>{profile.name}</strong>
+          <p>
+            {profile.role}
+            <br />
+            {profile.tagline}
+          </p>
+        </div>
         <div className="contact-row" aria-label="주요 연락처">
           {contacts.map((contact) =>
             contact.href ? (
               <a key={contact.label} href={contact.href}>
-                <span>{contact.label}</span>
                 {contact.value}
               </a>
             ) : (
               <span key={contact.label} className="contact-text">
-                <span>{contact.label}</span>
                 {contact.value}
               </span>
             ),
           )}
         </div>
-        <p className="hero-summary">{profile.summary}</p>
-      </div>
+      </aside>
+
       <div className="highlight-grid" aria-label="핵심 성과">
         {highlights.map((highlight) => (
           <article className="highlight-card" key={`${highlight.value}-${highlight.label}`}>

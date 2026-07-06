@@ -37,8 +37,9 @@ export const resume = {
     currentPosition: "UXROOM 백엔드 개발자",
     tagline: "Java/Spring 기반 실무형 서버 개발자",
     photo: "/profile.jpg",
+    headline: "운영 리스크를 줄이는\n백엔드 개발자",
     summary:
-      "운영 DB 이관, 배치 자동화, 모니터링, CI/CD/NCP 인프라, 예약 동시성 제어, 실시간 AI 비밀 대화 백엔드를 경험했습니다.",
+      "DB 이관, 배치 자동화, 모니터링, NCP 인프라, 예약 동시성 제어, 실시간 AI 음성 파이프라인을 실무에서 다뤘습니다.",
   },
   contacts: [
     { label: "Phone", value: "010-9072-1938", href: "tel:01090721938" },
@@ -64,8 +65,8 @@ export const resume = {
       detail: "수동 SQL·스크립트 운영 업무 스케줄링",
     },
     {
-      value: "500ms 미만",
-      label: "TTS 재생 평균 지연",
+      value: "500ms",
+      label: "AI 음성 지연",
       detail: "STT -> LLM -> TTS -> WebSocket 저지연 파이프라인",
     },
   ] satisfies Highlight[],

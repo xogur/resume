@@ -15,20 +15,12 @@ export function Projects({ projects }: ProjectsProps) {
               <h3>{project.title}</h3>
               <p>{project.subtitle}</p>
             </div>
-            <dl>
-              <div>
-                <dt>핵심 역할</dt>
-                <dd>{project.contribution}</dd>
-              </div>
-              <div>
-                <dt>기술 포인트</dt>
-                <dd>{project.technicalPoint}</dd>
-              </div>
-              <div>
-                <dt>성과</dt>
-                <dd>{project.impact}</dd>
-              </div>
-            </dl>
+            <div className="project-summary">
+              <p>
+                {project.contribution} {project.technicalPoint}
+              </p>
+              <strong>성과: {project.impact}</strong>
+            </div>
           </article>
         ))}
       </div>
