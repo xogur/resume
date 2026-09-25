@@ -199,6 +199,17 @@
   padding-left: 20px;
 }
 
+.portfolio-walkthrough ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.portfolio-walkthrough p {
+  margin-top: 12px;
+  color: #47535d;
+  font-size: 0.92rem;
+}
+
 .portfolio-case-body li + li {
   margin-top: 9px;
 }

@@ -18,12 +18,12 @@ export default function PortfolioPage() {
         <p className="eyebrow">Engineering Portfolio</p>
         <h1>기능 뒤에 있는 판단을 보여드립니다.</h1>
         <p className="portfolio-lead">
-          저는 AI 백엔드와 클라우드 인프라를 직접 만들고 운영합니다. 이력서에는 무엇을 했는지 짧게 적었습니다.
-          여기에는 왜 그 구조를 선택했는지, 실패를 어떻게 다루었는지, 어디까지 확인했는지를 담았습니다.
+          저는 업무 AI와 예약·실시간 음성 서비스의 화면과 API를 만들고, 울주 AI센터와 365MC의 클라우드 인프라를 구축·운영했습니다.
+          이력서에 짧게 적은 성과 뒤에서 어떤 구조를 선택했고, 실패와 복구를 어떻게 다뤘는지 설명합니다.
         </p>
         <p className="portfolio-stance">
-          모델 출력은 권한이 아니고, 배포 성공은 운영 검증의 끝이 아니며, 숫자는 측정 범위를 떠나면 성과가 될 수 없습니다.
-          이 세 가지 기준이 아래 프로젝트를 관통합니다.
+          AI의 데이터 접근 범위, 동시 요청의 정합성, 배포의 복구 경로를 서버와 운영 환경에서 확인합니다.
+          성과 수치는 측정한 대상과 조건을 함께 적었습니다.
         </p>
       </header>
 
@@ -80,6 +80,17 @@ export default function PortfolioPage() {
                 <h4>문제</h4>
                 <p>{project.problem}</p>
               </section>
+              {project.walkthrough ? (
+                <section>
+                  <h4>{project.walkthrough.title}</h4>
+                  <div className="portfolio-walkthrough">
+                    <ol>
+                      {project.walkthrough.steps.map((step) => <li key={step}>{step}</li>)}
+                    </ol>
+                    {project.walkthrough.note ? <p>{project.walkthrough.note}</p> : null}
+                  </div>
+                </section>
+              ) : null}
               <section>
                 <h4>설계와 구현</h4>
                 <ul>
