@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ContactLink, Highlight } from "@/data/resume";
 
 type HeroProps = {
@@ -22,6 +23,9 @@ export function Hero({ profile, contacts, highlights }: HeroProps) {
         <p className="hero-kicker">{profile.currentPosition}</p>
         <h1>{profile.headline}</h1>
         <p className="hero-summary">{profile.summary}</p>
+        <Link className="portfolio-entry-link" href="/portfolio">
+          프로젝트 설계·검증 자세히 보기 →
+        </Link>
       </div>
 
       <aside className="hero-profile" aria-label="프로필 요약">

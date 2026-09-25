@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "권태혁 | Backend Developer",
   description:
-    "Java/Spring 기반 실무형 백엔드 개발자 권태혁의 이력서입니다. DB 이관, 배치 자동화, 모니터링, NCP 인프라, CI/CD, 실시간 AI 비밀 대화 백엔드 경험을 담았습니다.",
+    "AI 백엔드와 NCP 클라우드 인프라를 설계·구축·운영한 권태혁의 이력서와 프로젝트 포트폴리오입니다.",
   robots: {
     index: false,
     follow: false,
