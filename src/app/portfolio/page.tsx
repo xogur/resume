@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { Fragment, type CSSProperties } from "react";
 import { portfolioCases } from "@/data/portfolio";
 
 export const metadata: Metadata = {
@@ -75,11 +77,140 @@ export default function PortfolioPage() {
               <p className="portfolio-flow"><strong>흐름</strong> {project.flow.join(" → ")}</p>
             ) : null}
 
+            {project.architecture ? (
+              <figure className="portfolio-architecture" aria-labelledby={`${project.id}-architecture`}>
+                <figcaption id={`${project.id}-architecture`}>{project.architecture.title}</figcaption>
+                <div className="portfolio-architecture-zones">
+                  {project.architecture.zones.map((zone, zoneIndex) => (
+                    <Fragment key={zone.name}>
+                      {zoneIndex > 0 ? (
+                        <p className="portfolio-architecture-link">
+                          <span aria-hidden="true" />
+                          {project.architecture.links[zoneIndex - 1]}
+                        </p>
+                      ) : null}
+                      <section className="portfolio-architecture-zone">
+                        <h5>{zone.name}</h5>
+                        <p>{zone.note}</p>
+                        <ul>
+                          {zone.nodes.map((node) => (
+                            <li key={node.name}>
+                              <strong>{node.name}</strong>
+                              {node.detail}
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    </Fragment>
+                  ))}
+                </div>
+              </figure>
+            ) : null}
+
             <div className="portfolio-case-body">
               <section>
                 <h4>문제</h4>
                 <p>{project.problem}</p>
               </section>
+              {project.threats ? (
+                <section>
+                  <h4>위협별 방어</h4>
+                  <dl className="portfolio-threats">
+                    {project.threats.map((item) => (
+                      <div key={item.threat}>
+                        <dt>{item.threat}</dt>
+                        <dd>{item.defense}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </section>
+              ) : null}
+              {project.cryptoFlow ? (
+                <section className="portfolio-case-wide">
+                  <h4>{project.cryptoFlow.title}</h4>
+                  <p className="portfolio-crypto-lead">{project.cryptoFlow.lead}</p>
+                  <div className="portfolio-crypto-overview">
+                    <div className="portfolio-keychain">
+                      <h5>키 계층</h5>
+                      <ol>
+                        {project.cryptoFlow.keyChain.map((key) => (
+                          <li key={key.name}>
+                            {key.via ? <p className="portfolio-keychain-via">{key.via}</p> : null}
+                            <div className="portfolio-keychain-key">
+                              <strong>{key.name}</strong>
+                              <span>{key.place}</span>
+                              <p>{key.detail}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                    <div className="portfolio-record">
+                      <h5>저장소에 남는 객체 하나</h5>
+                      <ol>
+                        {project.cryptoFlow.record.map((part) => (
+                          <li key={part.label}>
+                            <strong>{part.label}</strong>
+                            {part.detail}
+                          </li>
+                        ))}
+                      </ol>
+                      <p>평문 사진과 평문 데이터 키는 어디에도 저장하지 않습니다. 헤더는 암호화하지 않지만 AAD로 인증 태그에 묶여 있어, 한 글자만 바뀌어도 복호화가 실패합니다.</p>
+                    </div>
+                  </div>
+                  {project.cryptoFlow.sequences.map((sequence) => (
+                    <div className="portfolio-sequence" key={sequence.title}>
+                      <h5>{sequence.title}</h5>
+                      <ol style={{ "--lanes": sequence.lanes.length } as CSSProperties}>
+                        {sequence.lanes.map((lane, laneIndex) => (
+                          <li
+                            aria-hidden="true"
+                            className="portfolio-sequence-lane"
+                            data-lane={laneIndex}
+                            key={lane}
+                            style={{ gridColumn: laneIndex + 1, gridRow: `1 / span ${sequence.steps.length + 1}` }}
+                          >
+                            {lane}
+                          </li>
+                        ))}
+                        {sequence.steps.map((step, stepIndex) => (
+                          <li
+                            className="portfolio-sequence-step"
+                            data-lane={step.lane}
+                            key={step.title}
+                            style={{ gridColumn: step.lane + 1, gridRow: stepIndex + 2 }}
+                          >
+                            <span className="portfolio-sequence-meta">
+                              <b>{stepIndex + 1}</b>
+                              <strong>{step.title}</strong>
+                              <span>{sequence.lanes[step.lane]}</span>
+                            </span>
+                            {step.detail}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  ))}
+                </section>
+              ) : null}
+              {project.pipelines?.map((pipeline) => (
+                <section className="portfolio-case-wide" key={pipeline.title}>
+                  <h4>{pipeline.title}</h4>
+                  <p className="portfolio-crypto-lead">{pipeline.lead}</p>
+                  <ol className="portfolio-pipeline">
+                    {pipeline.steps.map((step, stepIndex) => (
+                      <li key={step.title}>
+                        <span className="portfolio-pipeline-meta">
+                          <b>{stepIndex + 1}</b>
+                          <em>{step.badge}</em>
+                        </span>
+                        <strong>{step.title}</strong>
+                        {step.detail}
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+              ))}
               {project.walkthrough ? (
                 <section>
                   <h4>{project.walkthrough.title}</h4>
@@ -88,6 +219,22 @@ export default function PortfolioPage() {
                       {project.walkthrough.steps.map((step) => <li key={step}>{step}</li>)}
                     </ol>
                     {project.walkthrough.note ? <p>{project.walkthrough.note}</p> : null}
+                  </div>
+                </section>
+              ) : null}
+              {project.gallery ? (
+                <section>
+                  <h4>주요 동작 화면</h4>
+                  <div className="portfolio-gallery">
+                    {project.gallery.map((shot) => (
+                      <figure key={shot.src}>
+                        <Image src={shot.src} alt={shot.alt} width={1500} height={940} sizes="(max-width: 860px) 100vw, 760px" />
+                        <figcaption>
+                          <strong>{shot.title}</strong>
+                          {shot.description}
+                        </figcaption>
+                      </figure>
+                    ))}
                   </div>
                 </section>
               ) : null}
