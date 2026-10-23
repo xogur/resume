@@ -14,6 +14,7 @@ export type PortfolioCase = {
     }[];
     links: string[];
   };
+  diagram?: "farmsco-agent";
   threats?: { threat: string; defense: string }[];
   cryptoFlow?: {
     title: string;
@@ -74,7 +75,8 @@ export const portfolioCases = [
     area: "AI AGENT / DATA ACCESS",
     title: "팜스코 영업 AI Agent: 모델의 답보다 실행 경계를 먼저 설계",
     lead: "직원의 질문 하나로 SAP 매출 조회, 격차 계산, 기술문서 검색, 차트, 보고서와 파일 생성까지 이어서 수행하는 Spring Boot AI 에이전트입니다. AI 모델은 온프레미스 GPU 서버에 vLLM으로 직접 띄웠습니다. 에이전트가 도구를 고르고 순서를 정하되, 실행 범위와 답변에 붙는 근거는 서버가 통제합니다.",
-    stack: ["Spring Boot", "AI Agent", "vLLM", "온프레미스 GPU", "RAG", "Text-to-SQL", "PostgreSQL", "NCP"],
+    stack: ["Spring Boot", "LangGraph", "AI Agent", "Multi-Agent", "vLLM", "온프레미스 GPU", "RAG", "Reranker", "Knowledge Graph", "Graphify", "Text-to-SQL", "PostgreSQL", "pgvector", "NCP"],
+    diagram: "farmsco-agent",
     problem:
       "매출은 정형 데이터의 집계가 필요하고 제품 설명은 문서의 맥락이 필요했습니다. 두 근거를 한 답변에 연결하려면 편리함만큼 위험도 커집니다. 생성 SQL이 허용 범위를 벗어나거나, 무관한 문서를 그럴듯한 근거로 붙이는 경우를 서버에서 막아야 했습니다.",
     pipelines: [

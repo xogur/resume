@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, type CSSProperties } from "react";
+import { FarmscoAgentDiagram } from "@/components/portfolio/FarmscoAgentDiagram";
 import { portfolioCases, portfolioFamilies } from "@/data/portfolio";
 
 export const metadata: Metadata = {
@@ -98,7 +99,9 @@ export default function PortfolioPage() {
                   <p className="portfolio-flow"><strong>흐름</strong> {project.flow.join(" → ")}</p>
                 ) : null}
 
-                {project.architecture ? (
+                {project.diagram === "farmsco-agent" ? <FarmscoAgentDiagram /> : null}
+
+              {project.architecture ? (
                   <figure className="portfolio-architecture" aria-labelledby={`${project.id}-architecture`}>
                     <figcaption id={`${project.id}-architecture`}>{project.architecture.title}</figcaption>
                     <div className="portfolio-architecture-zones">

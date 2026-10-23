@@ -308,6 +308,583 @@
   font-size: 0.92rem;
 }
 
+.fad {
+  margin: 28px 0 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  word-break: keep-all;
+}
+
+.fad > figcaption {
+  color: var(--accent);
+  font-size: 0.94rem;
+  font-weight: 800;
+}
+
+.fad-part {
+  margin: 18px 0 10px;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.fad-icon {
+  display: inline-grid;
+  flex: none;
+  width: 22px;
+  height: 22px;
+}
+
+.fad-icon-lg {
+  width: 32px;
+  height: 32px;
+}
+
+.fad-icon svg,
+.fad small svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fad-system {
+  display: grid;
+  grid-template-areas:
+    "user a1 spring a2 graph a3 model"
+    ". . a4 . . . ."
+    ". . data data data data data";
+  grid-template-columns: 112px 48px minmax(0, 1fr) 62px minmax(0, 1fr) 44px 150px;
+  align-items: center;
+}
+
+.fad-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 10px;
+  border: 1px solid var(--tone-line);
+  border-radius: 12px;
+  background: var(--tone-bg);
+  color: var(--tone);
+  text-align: center;
+}
+
+.fad-card[data-tone="client"] { --tone: #4a6283; --tone-bg: #f3f6fa; --tone-line: #cdd6e3; }
+.fad-card[data-tone="model"] { --tone: #6b5bb5; --tone-bg: #f6f4fc; --tone-line: #d9d4ee; }
+.fad-card[data-tone="data"] { --tone: #c46a2b; --tone-bg: #fff7f1; --tone-line: #efd2bb; }
+
+.fad-card strong {
+  margin-top: 3px;
+  color: var(--text);
+  font-size: 0.94rem;
+}
+
+.fad-card small {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #47535d;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.fad-card small svg {
+  width: 13px;
+  height: 13px;
+}
+
+.fad-card-wide {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px 14px;
+  text-align: left;
+}
+
+.fad-card-wide strong {
+  display: block;
+  margin: 0;
+}
+
+.fad-outputs,
+.fad-pills,
+.fad-legend,
+.fad-lanes,
+.fad-lane ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fad-outputs {
+  display: grid;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.fad-outputs li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.fad-outputs .fad-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+.fad-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 5px;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.fad-arrow i {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+}
+
+.fad-arrow i::after {
+  position: absolute;
+  top: -4px;
+  right: -1px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid var(--accent);
+  content: "";
+}
+
+.fad-arrow i.fad-arrow-back::after {
+  right: auto;
+  left: -1px;
+  border-right: 7px solid var(--accent);
+  border-left: 0;
+}
+
+.fad-arrow-down {
+  flex-direction: row;
+  justify-content: center;
+  padding: 6px 0;
+}
+
+.fad-arrow-down i,
+.fad-arrow-down i.fad-arrow-back {
+  width: 2px;
+  height: 22px;
+}
+
+.fad-arrow-down i::after {
+  top: auto;
+  right: auto;
+  bottom: -1px;
+  left: -4px;
+  border-top: 7px solid var(--accent);
+  border-right: 5px solid transparent;
+  border-bottom: 0;
+  border-left: 5px solid transparent;
+}
+
+.fad-box {
+  align-self: stretch;
+  padding: 12px;
+  border: 2px solid var(--box-line);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.fad-box[data-tone="spring"] { --box: #3f7d3a; --box-line: #cfe3cc; --box-bg: #f5faf4; }
+.fad-box[data-tone="graph"] { --box: #1c5d7a; --box-line: #c6dce6; --box-bg: #f1f7fa; }
+
+.fad-box h5 {
+  margin: 0 0 8px;
+  color: var(--box);
+  font-size: 0.94rem;
+  font-weight: 900;
+}
+
+.fad-box h5 small {
+  margin-left: 6px;
+  color: #47535d;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.fad-sub {
+  margin: 9px 0 5px;
+  color: var(--box);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.fad-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.fad-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border: 1px solid var(--box-line);
+  border-radius: 999px;
+  background: var(--box-bg);
+  color: var(--text);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.fad-chips-plain .fad-chip {
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.fad-chip .fad-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--box);
+}
+
+.fad-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.fad-card-wide .fad-pills {
+  margin: 0;
+}
+
+.fad-pills li {
+  padding: 2px 8px;
+  border: 1px solid var(--tone-line);
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.fad-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 6px 0 0;
+  color: #b3261e;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.fad-block .fad-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.fad-graph-wrap {
+  padding: 12px;
+  border: 1px solid #c6dce6;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.fad-graph {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.fad-graph-tall {
+  display: none;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.fad-graph-region {
+  fill: #f1f7fa;
+  stroke: #1c5d7a;
+  stroke-dasharray: 6 5;
+  stroke-width: 1.4;
+}
+
+.fad-graph-region-label {
+  fill: #1c5d7a;
+  font-size: 11.5px;
+  font-weight: 900;
+}
+
+.fad-graph-group {
+  fill: #ffffff;
+  stroke: #9cc3d3;
+  stroke-dasharray: 4 4;
+}
+
+.fad-graph marker path {
+  fill: #5b6b78;
+}
+
+.fad-graph-edge path {
+  fill: none;
+  stroke: #5b6b78;
+  stroke-width: 1.6;
+}
+
+.fad-graph-edge[data-tone="loop"] path {
+  stroke: #1c5d7a;
+  stroke-width: 2.4;
+}
+
+.fad-graph-edge[data-tone="retry"] path {
+  stroke-dasharray: 4 4;
+}
+
+.fad-graph-edge text {
+  fill: #47535d;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.fad-graph-edge[data-tone="loop"] text {
+  fill: #1c5d7a;
+}
+
+.fad-graph-terminal {
+  fill: #1c5d7a;
+}
+
+.fad-graph-end {
+  fill: #ffffff;
+  stroke: #1c5d7a;
+  stroke-width: 4;
+}
+
+.fad-graph-node rect {
+  fill: var(--node-bg);
+  stroke: var(--node);
+  stroke-width: 1.6;
+}
+
+.fad-graph-node text {
+  text-anchor: middle;
+}
+
+.fad-graph-label {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.fad-graph-sub {
+  fill: var(--node);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+[data-kind="llm"] { --node: #6b5bb5; --node-bg: #f6f4fc; }
+[data-kind="agent"] { --node: #1c5d7a; --node-bg: #e8f2f7; }
+[data-kind="control"] { --node: #0e6f62; --node-bg: #f0f7f4; }
+[data-kind="stop"] { --node: #b3261e; --node-bg: #fdf1f0; }
+
+.fad-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 8px;
+  color: #47535d;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.fad-legend li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.fad-legend i {
+  width: 12px;
+  height: 12px;
+  border: 1.6px solid var(--node);
+  border-radius: 4px;
+  background: var(--node-bg);
+}
+
+.fad-lanes {
+  display: grid;
+  gap: 8px;
+}
+
+.fad-lane {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.fad-lane header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 8px;
+}
+
+.fad-lane header .fad-icon {
+  color: #1c5d7a;
+}
+
+.fad-lane header strong {
+  font-size: 0.86rem;
+}
+
+.fad-lane header em {
+  width: 100%;
+  padding-left: 30px;
+  color: #1c5d7a;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.fad-lane ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.fad-lane ol li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fad-lane ol li + li::before {
+  color: #8995a3;
+  font-weight: 900;
+  content: "→";
+}
+
+.fad-lane ol li span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.fad-lane ol li b {
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--badge-bg);
+  color: var(--badge);
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.fad-lane b[data-kind="model"] { --badge: #ffffff; --badge-bg: #6b5bb5; }
+.fad-lane b[data-kind="data"] { --badge: #ffffff; --badge-bg: #c46a2b; }
+.fad-lane b[data-kind="evidence"] { --badge: #ffffff; --badge-bg: #0e6f62; }
+.fad-lane b[data-kind="plain"] { --badge: #47535d; --badge-bg: #e4e8ed; }
+
+@media (max-width: 960px) {
+  .fad-system {
+    grid-template-areas: "user" "a1" "spring" "a4" "data" "a2" "graph" "a3" "model";
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fad-user {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .fad-outputs {
+    margin-top: 0;
+  }
+
+  .fad-arrow {
+    flex-direction: row;
+    justify-content: center;
+    padding: 6px 0;
+  }
+
+  .fad-arrow i {
+    width: 2px;
+    height: 22px;
+  }
+
+  .fad-arrow i::after {
+    top: auto;
+    right: auto;
+    bottom: -1px;
+    left: -4px;
+    border-top: 7px solid var(--accent);
+    border-right: 5px solid transparent;
+    border-bottom: 0;
+    border-left: 5px solid transparent;
+  }
+
+  .fad-arrow i.fad-arrow-back::after {
+    top: -1px;
+    bottom: auto;
+    border-top: 0;
+    border-right: 5px solid transparent;
+    border-bottom: 7px solid var(--accent);
+  }
+}
+
+@media (max-width: 720px) {
+  .fad,
+  .fad-graph-wrap {
+    padding: 10px;
+  }
+
+  .fad-graph-wide {
+    display: none;
+  }
+
+  .fad-graph-tall {
+    display: block;
+  }
+
+  .fad-lane {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+}
+
 .portfolio-architecture {
   margin: 28px 0 0;
   padding: 20px;
