@@ -3,7 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment, type CSSProperties } from "react";
 import { FarmscoAgentDiagram } from "@/components/portfolio/FarmscoAgentDiagram";
+import { UljuInfraDiagram } from "@/components/portfolio/UljuInfraDiagram";
 import { portfolioCases, portfolioFamilies } from "@/data/portfolio";
+
+function Marked({ text }: { text: string }) {
+  return text.split(/==(.+?)==/).map((part, index) => (index % 2 === 1 ? <mark className="portfolio-mark" key={index}>{part}</mark> : part));
+}
 
 export const metadata: Metadata = {
   title: "권태혁 | 프로젝트 포트폴리오",
@@ -71,7 +76,7 @@ export default function PortfolioPage() {
                 <section className="portfolio-family" id={family.id} aria-labelledby={`${family.id}-title`}>
                   <p className="eyebrow">Product Family</p>
                   <h3 id={`${family.id}-title`}>{family.title}</h3>
-                  <p>{family.lead}</p>
+                  <p><Marked text={family.lead} /></p>
                   <ol>
                     {family.members.map((member, memberIndex) => (
                       <li key={member.caseId}>
@@ -89,7 +94,7 @@ export default function PortfolioPage() {
                 <header>
                   <p className="portfolio-case-number">{String(index + 1).padStart(2, "0")} / {project.area}</p>
                   <h3 id={`${project.id}-title`}>{project.title}</h3>
-                  <p className="portfolio-case-lead">{project.lead}</p>
+                  <p className="portfolio-case-lead"><Marked text={project.lead} /></p>
                   <ul className="portfolio-tags" aria-label="사용 기술">
                     {project.stack.map((item) => <li key={item}>{item}</li>)}
                   </ul>
@@ -100,6 +105,7 @@ export default function PortfolioPage() {
                 ) : null}
 
                 {project.diagram === "farmsco-agent" ? <FarmscoAgentDiagram /> : null}
+                {project.diagram === "ulju-infra" ? <UljuInfraDiagram /> : null}
 
               {project.architecture ? (
                   <figure className="portfolio-architecture" aria-labelledby={`${project.id}-architecture`}>
@@ -120,7 +126,7 @@ export default function PortfolioPage() {
                               {zone.nodes.map((node) => (
                                 <li key={node.name}>
                                   <strong>{node.name}</strong>
-                                  {node.detail}
+                                  <Marked text={node.detail} />
                                 </li>
                               ))}
                             </ul>
@@ -134,7 +140,7 @@ export default function PortfolioPage() {
                 <div className="portfolio-case-body">
                   <section>
                     <h4>문제</h4>
-                    <p>{project.problem}</p>
+                    <p><Marked text={project.problem} /></p>
                   </section>
                   {project.threats ? (
                     <section>
@@ -143,7 +149,7 @@ export default function PortfolioPage() {
                         {project.threats.map((item) => (
                           <div key={item.threat}>
                             <dt>{item.threat}</dt>
-                            <dd>{item.defense}</dd>
+                            <dd><Marked text={item.defense} /></dd>
                           </div>
                         ))}
                       </dl>
@@ -152,7 +158,7 @@ export default function PortfolioPage() {
                   {project.cryptoFlow ? (
                     <section className="portfolio-case-wide">
                       <h4>{project.cryptoFlow.title}</h4>
-                      <p className="portfolio-crypto-lead">{project.cryptoFlow.lead}</p>
+                      <p className="portfolio-crypto-lead"><Marked text={project.cryptoFlow.lead} /></p>
                       <div className="portfolio-crypto-overview">
                         <div className="portfolio-keychain">
                           <h5>키 계층</h5>
@@ -163,7 +169,7 @@ export default function PortfolioPage() {
                                 <div className="portfolio-keychain-key">
                                   <strong>{key.name}</strong>
                                   <span>{key.place}</span>
-                                  <p>{key.detail}</p>
+                                  <p><Marked text={key.detail} /></p>
                                 </div>
                               </li>
                             ))}
@@ -175,7 +181,7 @@ export default function PortfolioPage() {
                             {project.cryptoFlow.record.map((part) => (
                               <li key={part.label}>
                                 <strong>{part.label}</strong>
-                                {part.detail}
+                                <Marked text={part.detail} />
                               </li>
                             ))}
                           </ol>
@@ -209,7 +215,7 @@ export default function PortfolioPage() {
                                   <strong>{step.title}</strong>
                                   <span>{sequence.lanes[step.lane]}</span>
                                 </span>
-                                {step.detail}
+                                <Marked text={step.detail} />
                               </li>
                             ))}
                           </ol>
@@ -220,7 +226,7 @@ export default function PortfolioPage() {
                   {project.pipelines?.map((pipeline) => (
                     <section className="portfolio-case-wide" key={pipeline.title}>
                       <h4>{pipeline.title}</h4>
-                      <p className="portfolio-crypto-lead">{pipeline.lead}</p>
+                      <p className="portfolio-crypto-lead"><Marked text={pipeline.lead} /></p>
                       <ol className="portfolio-pipeline">
                         {pipeline.steps.map((step, stepIndex) => (
                           <li key={step.title}>
@@ -229,7 +235,7 @@ export default function PortfolioPage() {
                               <em>{step.badge}</em>
                             </span>
                             <strong>{step.title}</strong>
-                            {step.detail}
+                            <Marked text={step.detail} />
                           </li>
                         ))}
                       </ol>
@@ -240,9 +246,9 @@ export default function PortfolioPage() {
                       <h4>{project.walkthrough.title}</h4>
                       <div className="portfolio-walkthrough">
                         <ol>
-                          {project.walkthrough.steps.map((step) => <li key={step}>{step}</li>)}
+                          {project.walkthrough.steps.map((step) => <li key={step}><Marked text={step} /></li>)}
                         </ol>
-                        {project.walkthrough.note ? <p>{project.walkthrough.note}</p> : null}
+                        {project.walkthrough.note ? <p><Marked text={project.walkthrough.note} /></p> : null}
                       </div>
                     </section>
                   ) : null}
@@ -255,7 +261,7 @@ export default function PortfolioPage() {
                             <Image src={shot.src} alt={shot.alt} width={1500} height={940} sizes="(max-width: 860px) 100vw, 760px" />
                             <figcaption>
                               <strong>{shot.title}</strong>
-                              {shot.description}
+                              <Marked text={shot.description} />
                             </figcaption>
                           </figure>
                         ))}
@@ -265,17 +271,17 @@ export default function PortfolioPage() {
                   <section>
                     <h4>설계와 구현</h4>
                     <ul>
-                      {project.decisions.map((decision) => <li key={decision}>{decision}</li>)}
+                      {project.decisions.map((decision) => <li key={decision}><Marked text={decision} /></li>)}
                     </ul>
                   </section>
                   <section>
                     <h4>확인한 결과</h4>
                     <ul>
-                      {project.verification.map((result) => <li key={result}>{result}</li>)}
+                      {project.verification.map((result) => <li key={result}><Marked text={result} /></li>)}
                     </ul>
                   </section>
                 </div>
-                <p className="portfolio-message"><strong>전달하고 싶은 메시지</strong>{project.message}</p>
+                <p className="portfolio-message"><strong>전달하고 싶은 메시지</strong><Marked text={project.message} /></p>
               </article>
             </Fragment>
           );

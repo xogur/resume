@@ -84,6 +84,31 @@ const icons: Record<string, ReactNode> = {
       <path d="M8 11V7a4 4 0 0 1 8 0v4" />
     </>
   ),
+  sheet: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 10h18M3 15h18M9 4v16" />
+    </>
+  ),
+  plug: (
+    <>
+      <path d="M9 2v6M15 2v6" />
+      <path d="M6 8h12v3a6 6 0 0 1-12 0z" />
+      <path d="M12 17v5" />
+    </>
+  ),
+  box: (
+    <>
+      <path d="M3 8h18v12H3z" />
+      <path d="M2 4h20v4H2zM10 12h4" />
+    </>
+  ),
+  link: (
+    <>
+      <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" />
+      <path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" />
+    </>
+  ),
   ban: (
     <>
       <circle cx="12" cy="12" r="9" />
@@ -155,7 +180,7 @@ const graphText: Record<string, { label: string; sub: string; kind: NodeKind }> 
   evidence: { label: "근거 조립", sub: "근거 ID", kind: "control" },
   answer: { label: "답변 생성", sub: "문장·인용", kind: "llm" },
   verify: { label: "검증", sub: "숫자·인용 대조", kind: "control" },
-  report: { label: "리포트 에이전트", sub: "차트·보고서·파일", kind: "agent" },
+  report: { label: "리포트 에이전트", sub: "MCP · 엑셀·워드·PDF", kind: "agent" },
 };
 
 const graphLayouts: GraphLayout[] = [
@@ -295,7 +320,7 @@ function AgentGraph({ layout }: { layout: GraphLayout }) {
   );
 }
 
-type StepKind = "model" | "data" | "evidence" | "plain";
+type StepKind = "model" | "data" | "evidence" | "mcp" | "plain";
 const badgeKind: Record<string, StepKind> = {
   LLM: "model",
   Embedding: "model",
@@ -306,6 +331,10 @@ const badgeKind: Record<string, StepKind> = {
   "Knowledge Graph": "data",
   "근거 ID": "evidence",
   "근거 저장소": "evidence",
+  "근거 ID 대조": "evidence",
+  "LLM · JSON Schema": "model",
+  MCP: "mcp",
+  "만료 후 자동 삭제": "data",
 };
 
 const lanes: { icon: IconName; name: string; tech: string; steps: [string, string][] }[] = [
@@ -330,8 +359,8 @@ const lanes: { icon: IconName; name: string; tech: string; steps: [string, strin
   {
     icon: "file",
     name: "리포트 에이전트",
-    tech: "차트·보고서·파일",
-    steps: [["검증된 근거 수집", "근거 저장소"], ["격차 계산", "코드 실행"], ["차트 스펙", "월별·워터폴"], ["보고서 작성", "LLM"], ["파일 생성", "내려받기"]],
+    tech: "문서 생성 MCP",
+    steps: [["검증된 근거 수집", "근거 저장소"], ["보고서 스펙", "LLM · JSON Schema"], ["스펙 검증", "근거 ID 대조"], ["도구 호출", "MCP"], ["파일 렌더링", "xlsx·docx·pdf"], ["다운로드 링크", "만료 후 자동 삭제"]],
   },
   {
     icon: "layers",
@@ -347,6 +376,13 @@ const legend = [
   { kind: "control", label: "제어 노드" },
   { kind: "stop", label: "종료 분기" },
 ] as const;
+
+const renderers: { icon: IconName; name: string; tool: string; lib: string; parts: string[] }[] = [
+  { icon: "sheet", name: "Excel", tool: "render_xlsx", lib: "openpyxl", parts: ["요약 시트", "원본 데이터", "격차 분해", "네이티브 차트", "근거·쿼리 시트"] },
+  { icon: "file", name: "Word", tool: "render_docx", lib: "python-docx", parts: ["결론·요약", "표", "차트 이미지", "인용 각주"] },
+  { icon: "file", name: "PDF", tool: "render_pdf", lib: "Jinja2 · Playwright", parts: ["웹 보고서와 같은 HTML 템플릿", "인쇄용 레이아웃"] },
+  { icon: "chart", name: "차트", tool: "render_chart", lib: "Vega-Lite", parts: ["웹 화면", "문서용 PNG", "엑셀 차트"] },
+];
 
 export function FarmscoAgentDiagram() {
   return (
@@ -384,7 +420,7 @@ export function FarmscoAgentDiagram() {
             <Chip>벡터 검색</Chip>
             <Chip>그래프 조회</Chip>
             <Chip>격차 계산</Chip>
-            <Chip>파일 생성</Chip>
+            <Chip>다운로드 권한 확인</Chip>
           </div>
         </section>
 
@@ -401,6 +437,11 @@ export function FarmscoAgentDiagram() {
             <Chip icon="search">문서 검색 RAG</Chip>
             <Chip icon="graph">지식그래프</Chip>
             <Chip icon="file">리포트</Chip>
+          </div>
+          <p className="fad-sub">도구 연결</p>
+          <div className="fad-chips">
+            <Chip icon="layers">Spring 도구 API</Chip>
+            <Chip icon="plug">MCP 클라이언트</Chip>
           </div>
           <p className="fad-sub">StateGraph 공유 상태</p>
           <div className="fad-chips fad-chips-plain">
@@ -429,6 +470,22 @@ export function FarmscoAgentDiagram() {
         </div>
 
         <Arrow area="a4" label="읽기 전용 계정" vertical />
+
+        <Arrow area="a5" label="MCP 도구 호출" vertical />
+
+        <div className="fad-card fad-card-wide" data-tone="mcp" style={{ gridArea: "mcp" }}>
+          <span className="fad-icon fad-icon-lg"><Icon name="plug" /></span>
+          <div>
+            <strong>문서 생성 MCP 서버</strong>
+            <small>사설망 · 결과는 서버 로컬 저장</small>
+          </div>
+          <ul className="fad-pills">
+            <li>Excel</li>
+            <li>Word</li>
+            <li>PDF</li>
+            <li>차트</li>
+          </ul>
+        </div>
 
         <div className="fad-card fad-card-wide" data-tone="data" style={{ gridArea: "data" }}>
           <span className="fad-icon fad-icon-lg"><Icon name="database" /></span>
@@ -477,6 +534,60 @@ export function FarmscoAgentDiagram() {
           </li>
         ))}
       </ol>
+
+      <p className="fad-part">④ 산출물 생성 · 문서 생성 MCP 서버</p>
+      <div className="fad-mcp">
+        <div className="fad-card" data-tone="model">
+          <span className="fad-icon fad-icon-lg"><Icon name="quote" /></span>
+          <strong>보고서 스펙</strong>
+          <small>LLM · JSON Schema</small>
+          <ul className="fad-pills">
+            <li>섹션 구성</li>
+            <li>표 → 근거 ID</li>
+            <li>차트 스펙</li>
+            <li>서술 문단</li>
+          </ul>
+        </div>
+
+        <Arrow area="m1" label="MCP 도구 호출" />
+
+        <section className="fad-box" data-tone="mcp">
+          <h5>문서 생성 MCP 서버 <small>Streamable HTTP · 사설망</small></h5>
+          <ul className="fad-renderers">
+            {renderers.map((item) => (
+              <li key={item.name}>
+                <header>
+                  <span className="fad-icon"><Icon name={item.icon} /></span>
+                  <strong>{item.name}</strong>
+                  <code>{item.tool}</code>
+                </header>
+                <em>{item.lib}</em>
+                <div className="fad-chips fad-chips-plain">
+                  {item.parts.map((part) => <Chip key={part}>{part}</Chip>)}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <Arrow area="m2" label="저장" />
+
+        <div className="fad-card" data-tone="data">
+          <span className="fad-icon fad-icon-lg"><Icon name="box" /></span>
+          <strong>로컬 파일 저장</strong>
+          <small>서버 내부 디스크</small>
+          <ul className="fad-pills">
+            <li>만료 링크</li>
+            <li>권한 재확인</li>
+            <li>만료 시 자동 삭제</li>
+          </ul>
+        </div>
+      </div>
+      <ul className="fad-rules">
+        <li><span className="fad-icon"><Icon name="lock" /></span>숫자는 근거 ID로만 채움 · 모델은 구성만 결정</li>
+        <li><span className="fad-icon"><Icon name="chart" /></span>화면·엑셀·워드·PDF가 같은 차트 스펙 사용</li>
+        <li><span className="fad-icon"><Icon name="link" /></span>파일은 만료 링크로만 · 만료되면 서버에서 삭제</li>
+      </ul>
     </figure>
   );
 }
