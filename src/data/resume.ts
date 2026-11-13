@@ -151,11 +151,11 @@ export const resume = {
       impact: "정제 데이터로 수술 후 증상 예측은 10분마다, 마취 안전·지방흡입량·지방이식 예측과 일일 마감은 매일 적재합니다(2026.11.12 마취 안전 4,652건·지방흡입량 42,755건). 일 단위 예측 배치 3종은 최근 한 달간 실패·재시도가 없었습니다.",
     },
     {
-      title: "울주 AI센터 예약 서비스·클라우드 구축",
+      title: "울주 AI센터 예약 서비스·클라우드 구축·운영",
       subtitle: "네이버 클라우드(NCP) Gov, VPC, ALB, WAF, NestJS, Next.js",
       contribution: "울주 AI센터 네이버 클라우드 인프라와 예약 화면·API·배포 경로를 직접 구축·운영합니다.",
-      technicalPoint: "공공기관용(Gov) 리전에 VPC를 설계해 ALB·WAF만 공개 서브넷에 두고 웹·API·DB는 사설 서브넷에 배치했습니다. 운영 접속은 Bastion·SSL VPN, 외부 송신은 NAT Gateway로만 열고, 예약은 방 비관적 잠금으로 동시 요청 중 한 건만 확정합니다.",
-      impact: "2026년 8월 예약 294건을 동일 슬롯 중복 확정 없이 처리했습니다.",
+      technicalPoint: "공공기관용(Gov) 리전에 VPC를 설계해 ALB·WAF만 공개 서브넷에 두고 웹·API·DB는 사설 서브넷에 배치했습니다. 운영 접속은 Bastion·SSL VPN, 외부 송신은 NAT Gateway로만 열고, 예약은 방 비관적 잠금으로 동시 요청 중 한 건만 확정합니다. 공공기관 정보시스템 안정성 점검 기준에 맞춰 백업 정책, 장애 등급·전파 절차, 점검표, 패치 관리대장을 만들고, 접속로그 약 415만 건으로 핵심 기능 우선순위를 정했습니다.",
+      impact: "2026년 8월 예약 294건을 동일 슬롯 중복 확정 없이 처리했습니다. 접속로그 수집 중단 장애를 Nginx 로그 형식 변경까지 추적해 누락 194,344건을 재적재·검증하고, 실패가 바로 드러나도록 상태 점검을 추가했습니다.",
     },
     {
       title: "365MC HIS 보안 전환·무중단 배포·DB 이관",
@@ -168,11 +168,11 @@ export const resume = {
   skills: [
     {
       title: "AI",
-      skills: ["LangGraph", "Spring AI", "vLLM", "RAG", "STT·TTS"],
+      skills: ["LangGraph", "LangChain", "Spring AI", "vLLM", "RAG", "STT·TTS"],
     },
     {
       title: "Backend",
-      skills: ["Java", "Spring Boot", "Python", "FastAPI", "NestJS"],
+      skills: ["Java", "Spring Boot", "Python", "FastAPI"],
     },
     {
       title: "Frontend",
@@ -184,7 +184,7 @@ export const resume = {
     },
     {
       title: "Cloud & DevOps",
-      skills: ["네이버 클라우드(NCP)", "Azure", "Docker", "GitHub Actions", "Prometheus·Grafana"],
+      skills: ["네이버 클라우드(NCP, 실무)", "AWS(학습)", "Azure", "Docker", "GitHub Actions", "Prometheus·Grafana"],
     },
   ] satisfies SkillGroup[],
   credentials: [
