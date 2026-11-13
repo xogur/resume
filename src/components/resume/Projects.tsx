@@ -7,7 +7,7 @@ type ProjectsProps = {
 
 export function Projects({ projects }: ProjectsProps) {
   return (
-    <Section eyebrow="Selected Work" title="주요 프로젝트">
+    <Section title="주요 프로젝트">
       <div className="project-list">
         {projects.map((project) => (
           <article className="project-card" key={project.title}>

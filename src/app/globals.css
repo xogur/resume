@@ -6,9 +6,11 @@
   --muted: #64707c;
   --soft: #8995a3;
   --line: #e4e8ed;
-  --chip: #ffffff;
   --accent: #0e6f62;
   --accent-soft: #dceee9;
+  --font-body: var(--font-plex-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  /* 측정값 전용. 한글은 본문 서체로 넘어간다. */
+  --font-figure: var(--font-plex-mono), var(--font-plex-sans), "Malgun Gothic", monospace;
 }
 
 .portfolio-entry-link,
@@ -16,7 +18,7 @@
   display: inline-block;
   width: fit-content;
   color: var(--accent);
-  font-weight: 800;
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -34,13 +36,9 @@
   border-bottom: 1px solid var(--line);
 }
 
-.portfolio-intro .eyebrow {
-  margin-top: 54px;
-}
-
 .portfolio-intro h1 {
   max-width: 850px;
-  margin: 0;
+  margin: 54px 0 0;
   font-size: clamp(2.15rem, 5vw, 4rem);
   line-height: 1.15;
   word-break: keep-all;
@@ -56,8 +54,6 @@
 .portfolio-stance {
   max-width: 850px;
   margin: 30px 0 0;
-  padding: 14px 0 14px 20px;
-  border-left: 3px solid var(--accent);
   color: #34414a;
 }
 
@@ -72,7 +68,7 @@
 .portfolio-principles h2,
 .portfolio-work > h2 {
   margin: 0 0 22px;
-  font-size: clamp(1.5rem, 2.7vw, 2.2rem);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
   line-height: 1.25;
 }
 
@@ -129,12 +125,12 @@
 
 .portfolio-family h3 {
   margin: 0;
-  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
   line-height: 1.35;
   word-break: keep-all;
 }
 
-.portfolio-family > p:not(.eyebrow) {
+.portfolio-family > p {
   max-width: 850px;
   margin: 14px 0 22px;
   color: #34414a;
@@ -152,17 +148,16 @@
 .portfolio-family a {
   display: block;
   height: 100%;
-  padding: 14px 16px;
-  background: var(--surface);
-  border-left: 3px solid var(--line);
+  padding: 12px 0 0;
+  border-top: 1px solid var(--line);
   color: #47535d;
   font-size: 0.92rem;
   text-decoration: none;
 }
 
 .portfolio-family li:first-child a {
-  background: var(--surface-strong);
-  border-left-color: var(--accent);
+  border-top: 2px solid var(--accent);
+  padding-top: 11px;
 }
 
 .portfolio-family a:hover strong {
@@ -172,10 +167,8 @@
 
 .portfolio-family a span {
   display: block;
-  color: var(--accent);
-  font-size: 0.76rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 .portfolio-family a strong {
@@ -190,23 +183,15 @@
   border-radius: 2px;
   background: linear-gradient(transparent 52%, #ffe45c 52%, #ffe45c 92%, transparent 92%);
   color: inherit;
-  font-weight: 800;
+  font-weight: 600;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
 
-.portfolio-case-number {
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
 .portfolio-case h3 {
   margin: 0;
-  font-size: clamp(1.55rem, 3vw, 2.35rem);
-  line-height: 1.3;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1.35;
   word-break: keep-all;
 }
 
@@ -214,24 +199,13 @@
   max-width: 850px;
   margin: 15px 0 18px;
   font-size: 1.12rem;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .portfolio-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
   margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.portfolio-tags li {
-  padding: 3px 9px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: #47535d;
-  font-size: 0.83rem;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .portfolio-flow {
@@ -330,14 +304,14 @@
 .fad > figcaption {
   color: var(--accent);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-part {
   margin: 18px 0 10px;
   color: var(--text);
   font-size: 0.86rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .fad-icon {
@@ -444,7 +418,7 @@
   border-radius: 8px;
   background: #ffffff;
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-outputs .fad-icon {
@@ -461,7 +435,7 @@
   padding: 0 5px;
   color: var(--accent);
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -528,7 +502,7 @@
   margin: 0 0 8px;
   color: var(--box);
   font-size: 0.94rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .fad-box h5 small {
@@ -542,7 +516,7 @@
   margin: 9px 0 5px;
   color: var(--box);
   font-size: 0.7rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.03em;
 }
 
@@ -562,7 +536,7 @@
   background: var(--box-bg);
   color: var(--text);
   font-size: 0.74rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-chips-plain .fad-chip {
@@ -594,7 +568,7 @@
   border-radius: 999px;
   background: #ffffff;
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-block {
@@ -605,7 +579,7 @@
   margin: 6px 0 0;
   color: #b3261e;
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-block .fad-icon {
@@ -643,7 +617,7 @@
 .fad-graph-region-label {
   fill: #1c5d7a;
   font-size: 11.5px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .fad-graph-group {
@@ -674,7 +648,7 @@
 .fad-graph-edge text {
   fill: #47535d;
   font-size: 11.5px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-graph-edge[data-tone="loop"] text {
@@ -704,7 +678,7 @@
 .fad-graph-label {
   fill: var(--text);
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .fad-graph-sub {
@@ -730,7 +704,7 @@
 .uid > figcaption {
   color: var(--accent);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .uid-hint {
@@ -758,7 +732,7 @@
 .uid-zone-label {
   fill: var(--muted);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .uid-vpc {
@@ -770,7 +744,7 @@
 .uid-vpc-label {
   fill: #1c5d7a;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .uid-subnet {
@@ -782,7 +756,7 @@
 .uid-subnet-label {
   fill: #47535d;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .uid-node rect {
@@ -798,7 +772,7 @@
 .uid-label {
   fill: var(--text);
   font-size: 12.5px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .uid-sub {
@@ -837,7 +811,7 @@
 .uid-flow text {
   fill: var(--flow);
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 600;
   paint-order: stroke;
   stroke: #f6fafb;
   stroke-width: 4px;
@@ -853,7 +827,7 @@
 .uid-badge text {
   fill: #ffffff;
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 700;
   text-anchor: middle;
 }
 
@@ -907,7 +881,7 @@
   margin-top: 8px;
   color: #47535d;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-legend li {
@@ -961,7 +935,7 @@
   color: #1c5d7a;
   font-size: 0.72rem;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-lane ol {
@@ -979,7 +953,7 @@
 
 .fad-lane ol li + li::before {
   color: #8995a3;
-  font-weight: 900;
+  font-weight: 700;
   content: "→";
 }
 
@@ -993,7 +967,7 @@
   border-radius: 9px;
   background: var(--surface);
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-lane ol li b {
@@ -1002,7 +976,7 @@
   background: var(--badge-bg);
   color: var(--badge);
   font-size: 0.62rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.5;
   white-space: nowrap;
 }
@@ -1063,7 +1037,7 @@
   background: #ffffff;
   color: var(--box);
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-renderers em {
@@ -1072,7 +1046,7 @@
   color: #47535d;
   font-size: 0.72rem;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-renderers .fad-chip {
@@ -1098,7 +1072,7 @@
   border-radius: 999px;
   background: #ffffff;
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .fad-rules .fad-icon {
@@ -1213,7 +1187,7 @@
   margin-bottom: 14px;
   color: var(--accent);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .portfolio-architecture-zones {
@@ -1294,7 +1268,7 @@
   padding: 0 4px;
   color: var(--accent);
   font-size: 0.74rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.35;
   text-align: center;
   word-break: keep-all;
@@ -1337,7 +1311,7 @@
 }
 
 .portfolio-threats dt {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .portfolio-threats dd {
@@ -1396,15 +1370,9 @@
 .portfolio-keychain-key {
   padding: 9px 12px;
   border: 1px solid var(--line);
-  border-left: 4px solid var(--kc, var(--accent));
   border-radius: 8px;
   background: #ffffff;
 }
-
-.portfolio-keychain li:nth-child(1) { --kc: #6b5bb5; }
-.portfolio-keychain li:nth-child(2) { --kc: #9a8fd0; }
-.portfolio-keychain li:nth-child(3) { --kc: #0e6f62; }
-.portfolio-keychain li:nth-child(4) { --kc: #c46a2b; }
 
 .portfolio-keychain-key strong {
   font-size: 0.9rem;
@@ -1417,7 +1385,7 @@
   background: var(--surface-strong);
   color: var(--accent);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .portfolio-case-body .portfolio-keychain-key p {
@@ -1433,7 +1401,7 @@
   padding: 6px 0 6px 30px;
   color: #6b5bb5;
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .portfolio-keychain-via::before {
@@ -1521,7 +1489,7 @@
   border-top: 3px solid var(--lane);
   color: var(--text);
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -1553,7 +1521,7 @@
   margin-bottom: 4px;
   color: var(--lane);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .portfolio-sequence-meta b {
@@ -1573,61 +1541,25 @@
 }
 
 .portfolio-case-body .portfolio-pipeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
   margin: 0;
-  padding: 0;
-  list-style: none;
-  word-break: keep-all;
+  padding-left: 1.6em;
+  list-style: decimal;
 }
 
 .portfolio-case-body .portfolio-pipeline li {
-  margin: 0;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--accent);
-  border-radius: 10px;
-  background: var(--surface);
-  color: #47535d;
-  font-size: 0.8rem;
-  line-height: 1.55;
+  padding-left: 4px;
+  color: #34414a;
+}
+
+.portfolio-pipeline li::marker {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
 }
 
 .portfolio-pipeline li strong {
   display: block;
-  margin-bottom: 3px;
   color: var(--text);
-  font-size: 0.88rem;
-}
-
-.portfolio-pipeline-meta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
-}
-
-.portfolio-pipeline-meta b {
-  display: inline-grid;
-  flex: none;
-  place-items: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #ffffff;
-  font-size: 0.72rem;
-}
-
-.portfolio-pipeline-meta em {
-  padding: 1px 8px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 0.72rem;
-  font-style: normal;
-  font-weight: 800;
 }
 
 [data-lane="0"] { --lane: #0e6f62; }
@@ -1639,24 +1571,13 @@
   margin-top: 9px;
 }
 
-.portfolio-message {
-  margin: 22px 0 0 174px;
-  padding: 16px 18px;
-  background: var(--surface-strong);
-}
-
-.portfolio-message strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
 .portfolio-footer {
   padding: 44px 0 20px;
 }
 
 .portfolio-footer a {
   color: var(--accent);
-  font-weight: 800;
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -1674,10 +1595,6 @@
   .portfolio-case-body section {
     grid-template-columns: 1fr;
     gap: 8px;
-  }
-
-  .portfolio-message {
-    margin-left: 0;
   }
 
   .portfolio-threats div {
@@ -1765,12 +1682,23 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--text);
-  font-family:
-    "Segoe UI",
-    "Apple SD Gothic Neo",
-    "Noto Sans KR",
-    sans-serif;
-  line-height: 1.68;
+  font-family: var(--font-body);
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
 }
 
 a {
@@ -1780,6 +1708,30 @@ a {
 
 a:visited {
   color: #245a52;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.contact-row a:hover,
+.contact-panel a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.portfolio-entry-link:hover,
+.portfolio-back:hover,
+.portfolio-nav a:hover,
+.portfolio-footer a:hover {
+  text-decoration-thickness: 2px;
 }
 
 .page-shell {
@@ -1802,33 +1754,35 @@ a:visited {
   min-width: 0;
 }
 
-.hero-kicker,
-.eyebrow {
-  margin: 0 0 18px;
-  color: var(--accent);
-  font-size: 0.82rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 4.6vw, 3.6rem);
+  line-height: 1.1;
 }
 
-.hero h1 {
+.hero-role {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.hero-headline {
   max-width: 760px;
-  margin: 0;
-  font-size: clamp(3.2rem, 5.7vw, 4.9rem);
-  line-height: 1.06;
-  letter-spacing: 0;
-  word-break: keep-all;
+  margin: 40px 0 0;
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.3;
   white-space: pre-line;
   text-wrap: balance;
 }
 
 .hero-summary {
   max-width: 720px;
-  margin: 28px 0 0;
+  margin: 20px 0 0;
   color: #303943;
-  font-size: clamp(1.12rem, 2.1vw, 1.72rem);
-  line-height: 1.45;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
   word-break: keep-all;
 }
 
@@ -1850,25 +1804,12 @@ a:visited {
   background: #fff;
 }
 
-.hero-profile strong {
-  display: block;
-  color: #1f2831;
-  font-size: 1.05rem;
-}
-
-.hero-profile p {
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-weight: 650;
-  line-height: 1.55;
-}
-
 .contact-row {
   display: grid;
   gap: 5px;
   color: #111820;
   font-size: 0.92rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .contact-row a,
@@ -1881,19 +1822,16 @@ a:visited {
 
 .contact-panel span {
   display: inline-block;
-  min-width: 58px;
-  color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  min-width: 76px;
+  color: var(--muted);
+  font-weight: 400;
 }
 
 .highlight-grid {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
   padding: 34px 0 0;
 }
 
@@ -1904,8 +1842,12 @@ a:visited {
 .highlight-card strong {
   display: block;
   color: var(--text);
-  font-size: clamp(1.7rem, 3vw, 2.35rem);
-  line-height: 1;
+  font-family: var(--font-figure);
+  font-size: clamp(1.55rem, 2.7vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  word-spacing: -0.3em;
   word-break: keep-all;
 }
 
@@ -1913,7 +1855,7 @@ a:visited {
   display: block;
   margin-top: 8px;
   color: #2f3a45;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .highlight-card p {
@@ -1938,8 +1880,8 @@ a:visited {
 .section-heading h2 {
   margin: 0;
   color: #1d2832;
-  font-size: 1.02rem;
-  line-height: 1.2;
+  font-size: clamp(1.45rem, 2.2vw, 1.75rem);
+  line-height: 1.25;
 }
 
 .section-body {
@@ -1950,16 +1892,13 @@ a:visited {
   display: grid;
   gap: 14px;
   margin: 0;
-  padding: 0;
-  list-style: none;
+  padding-left: 1.2em;
 }
 
 .strength-list li {
-  padding-left: 18px;
-  border-left: 2px solid var(--accent);
   color: #222b34;
   font-size: 1.04rem;
-  font-weight: 750;
+  font-weight: 600;
   line-height: 1.55;
 }
 
@@ -1982,8 +1921,8 @@ a:visited {
 .skill-group h3 {
   margin: 0;
   color: #111820;
-  font-size: clamp(1.35rem, 2vw, 1.72rem);
-  line-height: 1.2;
+  font-size: clamp(1.15rem, 1.6vw, 1.32rem);
+  line-height: 1.35;
 }
 
 .item-heading p,
@@ -1996,7 +1935,8 @@ a:visited {
 .item-heading span {
   color: var(--muted);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -2004,24 +1944,30 @@ a:visited {
   display: grid;
   gap: 13px;
   margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
+  padding-left: 1.2em;
 }
 
 .experience-item li {
-  padding-left: 18px;
-  border-left: 2px solid var(--accent);
   color: #26313b;
   line-height: 1.65;
+}
+
+.strength-list li::marker,
+.experience-item li::marker {
+  color: var(--soft);
 }
 
 .project-card {
   display: grid;
   grid-template-columns: minmax(220px, 0.76fr) minmax(0, 1.24fr);
   gap: 28px;
-  padding: 24px;
-  border-radius: 18px;
-  background: var(--surface);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.project-card:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .project-summary {
@@ -2037,7 +1983,7 @@ a:visited {
 
 .project-summary strong {
   color: #24303a;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.55;
 }
 
@@ -2049,30 +1995,25 @@ a:visited {
   display: grid;
   grid-template-columns: minmax(170px, 0.28fr) minmax(0, 1fr);
   gap: 26px;
-  align-items: start;
+  align-items: baseline;
 }
 
-.skill-group div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.skill-group h3 {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.skill-group span {
-  padding: 8px 11px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--chip);
+.skill-group p {
+  margin: 0;
   color: #303943;
-  font-size: 0.9rem;
-  font-weight: 800;
+  line-height: 1.7;
 }
 
 .contact-panel {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 13px 26px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 @media (max-width: 860px) {
@@ -2096,16 +2037,10 @@ a:visited {
   .portrait {
     width: 96px;
     height: 96px;
-    grid-row: span 2;
-  }
-
-  .contact-row {
-    grid-column: 1 / -1;
   }
 
   .highlight-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px 18px;
+    gap: 22px;
   }
 
   .resume-section {
@@ -2119,24 +2054,33 @@ a:visited {
   .contact-panel {
     grid-template-columns: 1fr;
   }
+
+  .project-card {
+    gap: 14px;
+  }
+
+  .skill-group {
+    gap: 4px;
+  }
 }
 
 @media (max-width: 540px) {
-  body {
-    font-size: 15px;
-  }
-
   .page-shell {
     width: min(100% - 22px, 480px);
     padding-top: 22px;
   }
 
   .hero h1 {
-    font-size: clamp(2.35rem, 10.2vw, 2.58rem);
+    font-size: 2.3rem;
+  }
+
+  .hero-headline {
+    margin-top: 28px;
+    font-size: 1.5rem;
   }
 
   .hero-summary {
-    margin-top: 20px;
+    margin-top: 16px;
     font-size: 1rem;
   }
 
@@ -2155,8 +2099,8 @@ a:visited {
   }
 
   .highlight-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px 12px;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .highlight-card strong {
@@ -2175,17 +2119,17 @@ a:visited {
     padding: 36px 0;
   }
 
-  .project-card {
-    padding: 18px;
-    border-radius: 14px;
-  }
-
   .page-shell > .resume-section:last-child {
     display: none;
   }
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 12mm 14mm;
+  }
+
   :root {
     --background: #ffffff;
     --surface: #ffffff;
@@ -2194,7 +2138,6 @@ a:visited {
     --muted: #444444;
     --soft: #555555;
     --line: #d2d2d2;
-    --chip: #f4f4f4;
     --accent: #1d4f63;
   }
 
@@ -2225,13 +2168,17 @@ a:visited {
   }
 
   .hero h1 {
-    max-width: 540px;
-    font-size: 30pt;
+    font-size: 24pt;
+  }
+
+  .hero-headline {
+    margin-top: 10px;
+    font-size: 15pt;
   }
 
   .hero-summary {
-    margin-top: 10px;
-    font-size: 11pt;
+    margin-top: 8px;
+    font-size: 10.5pt;
   }
 
   .portrait {
@@ -2239,8 +2186,18 @@ a:visited {
     height: 68px;
   }
 
+  .hero-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-row a,
+  .contact-row .contact-text {
+    overflow-wrap: normal;
+    white-space: nowrap;
+  }
+
   .contact-row,
-  .hero-profile p,
+  .hero-role,
   .highlight-card p,
   .project-heading p,
   .item-heading p {
@@ -2259,17 +2216,49 @@ a:visited {
   .resume-section {
     grid-template-columns: 112px minmax(0, 1fr);
     gap: 18px;
-    padding: 14px 0;
+    padding: 12px 0;
+  }
+
+  /* 연락처는 첫 화면 프로필과 같은 내용이라 인쇄에서 뺀다. */
+  .page-shell > .resume-section:last-child {
+    display: none;
+  }
+
+  .highlight-grid,
+  .experience-item li,
+  .strength-list li {
     break-inside: avoid;
   }
 
+  .strength-list,
+  .experience-item ul {
+    gap: 5px;
+  }
+
+  .experience-item ul {
+    margin-top: 10px;
+  }
+
   .project-card {
-    grid-template-columns: .75fr 1.25fr;
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 4px;
     padding: 8px 0;
-    background: transparent;
-    border-radius: 0;
     break-inside: avoid;
+  }
+
+  .project-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 10px;
+  }
+
+  .project-heading p {
+    margin: 0;
+  }
+
+  .project-summary {
+    gap: 4px;
   }
 
   .skill-group {
@@ -2277,8 +2266,7 @@ a:visited {
     gap: 12px;
   }
 
-  .skill-group span {
-    padding: 3px 6px;
-    font-size: 8.5pt;
+  .skill-group p {
+    font-size: 9pt;
   }
 }

@@ -33,8 +33,8 @@ export type SkillGroup = {
 export const resume = {
   profile: {
     name: "권태혁",
-    role: "Backend Developer",
-    currentPosition: "UXROOM 백엔드 개발자",
+    role: "AX Backend Developer",
+    currentPosition: "UXROOM AX 백엔드 개발자",
     tagline: "Java/Spring 기반 실무형 서버 개발자",
     photo: "/profile.jpg",
     headline: "AI 백엔드와 클라우드\n인프라를 구축·운영하는 개발자",
@@ -42,26 +42,26 @@ export const resume = {
       "Spring Boot 업무 AI와 실시간 음성 대화 백엔드를 개발했습니다. 울주 AI센터와 365MC의 NCP 인프라는 직접 설계·구축·운영하며, 365MC에서는 보안 요구에 맞춰 사설망·권한 경계·암호화 저장·배포 복구 구조를 재구성했습니다. 저장·백업 비용도 설계에 반영했습니다.",
   },
   contacts: [
-    { label: "Phone", value: "010-9072-1938", href: "tel:01090721938" },
-    { label: "Email", value: "snsk656@naver.com", href: "mailto:snsk656@naver.com" },
-    { label: "Birth", value: "2000. 02. 08" },
+    { label: "전화", value: "010-9072-1938", href: "tel:01090721938" },
+    { label: "이메일", value: "snsk656@naver.com", href: "mailto:snsk656@naver.com" },
+    { label: "생년월일", value: "2000. 02. 08" },
     { label: "GitHub", value: "github.com/xogur", href: "https://github.com/xogur" },
   ] satisfies ContactLink[],
   highlights: [
     {
       value: "6개 DB",
       label: "운영 DB 무중단 이관",
-      detail: "Azure → NCP · 조합키·건수·샘플 정합성 검증",
+      detail: "Azure → NCP, 조합키·건수·샘플 정합성 검증",
     },
     {
       value: "0.88초 → 0.03~0.05초",
       label: "병원 목록 SQL 실행 시간",
-      detail: "APM 원인 분석 · 인덱스·일괄 조회 개선",
+      detail: "APM 원인 분석, 인덱스·일괄 조회 개선",
     },
     {
       value: "중단 0분",
       label: "블루그린 무중단 배포",
-      detail: "실제 트래픽 전환 · 이전 버전 복구 경로 확보",
+      detail: "실제 트래픽 전환, 이전 버전 복구 경로 확보",
     },
   ] satisfies Highlight[],
   strengths: [
@@ -74,7 +74,7 @@ export const resume = {
   experience: [
     {
       company: "UXROOM",
-      role: "백엔드 개발자",
+      role: "AX 백엔드 개발자",
       period: "2025.11 - 현재",
       bullets: [
         "Spring Boot 기반 팜스코 영업 AI에서 SAP 매출과 기술문서를 RAG·Text-to-SQL로 연결하고, 생성 SQL의 접근 범위를 제어했습니다.",
@@ -89,7 +89,7 @@ export const resume = {
   projects: [
     {
       title: "팜스코 AX 영업 AI Agent",
-      subtitle: "Spring Boot · RAG · Text-to-SQL",
+      subtitle: "Spring Boot, RAG, Text-to-SQL",
       contribution:
         "SAP 매출 데이터와 기술문서의 근거가 분리돼 있던 영업 질의 흐름을 하나의 AI 백엔드로 연결했습니다.",
       technicalPoint:
@@ -99,42 +99,42 @@ export const resume = {
     },
     {
       title: "365MC 조회 성능 개선",
-      subtitle: "APM · MSSQL · Next.js · 사진 API",
+      subtitle: "APM, MSSQL, Next.js, 사진 API",
       contribution: "병원 목록 SQL의 반복 조회 병목과 사진 갤러리의 원본 일괄 로딩 문제를 각각 추적했습니다.",
       technicalPoint: "목록 SQL에는 일괄 조회·인덱스 재설계를 적용했습니다. 사진 목록은 480px 썸네일을 화면 근처에서만 요청하고, 확대할 때 원본을 조회하도록 바꿨습니다.",
       impact: "목록 SQL 실행 시간 0.88초→0.03~0.05초. 합성 사진 1건의 목록 이미지 크기는 원본 1.08MB→썸네일 123KB로 줄었습니다(각각 별도 측정).",
     },
     {
       title: "울주 AI센터 예약 서비스·클라우드 구축",
-      subtitle: "NestJS · Next.js · TypeORM · NCP",
+      subtitle: "NestJS, Next.js, TypeORM, NCP",
       contribution: "울주 AI센터의 NCP 인프라와 예약 화면·API·배포 경로를 직접 구축하고 운영합니다. 같은 시간대에 요청이 겹칠 때 한 건만 확정하도록 예약 흐름을 설계했습니다.",
       technicalPoint: "NCP 네트워크·방화벽과 이전 빌드 복구 경로를 구성했습니다. 예약 기록이 없는 슬롯도 동시 요청을 순서대로 검사하도록 방을 비관적 쓰기 잠금으로 조회하고, 시간 겹침을 확인해 충돌을 거부했습니다.",
       impact: "2026년 8월 AI센터 웹 요청 372,121건·예약 생성 294건을 기록했고, 예약 로그에 동일 슬롯 중복 확정은 없었습니다.",
     },
     {
       title: "365MC HIS 보안 전환·무중단 배포",
-      subtitle: "Next.js · FastAPI · NCP · Blue/Green",
+      subtitle: "Next.js, FastAPI, NCP, Blue/Green",
       contribution: "365MC의 NCP 인프라를 보안 요구에 맞춰 재구성하고 운영합니다. HIS의 환자정보 접근 경로를 정비하고 사진관리 기능은 별도 API로 분리해 HIS 화면과 연동했습니다.",
       technicalPoint: "사설망 사진 API에 업무·지점별 권한 검증·감사 로그를 적용하고, KMS로 키를 보호한 암호문을 Object Storage에 저장했습니다. HIS는 배포 후보 확인 후 트래픽 전환·이전 버전 복구가 가능하게 구성하고, 사진은 바이너리 저장·변경분 백업으로 반복 읽기를 줄였습니다.",
       impact: "사진 API의 미인가 조회 거부를 확인했습니다. 합성 5MB 사진의 암호화 저장 형식 크기는 6.67MB→5.00MB(약 25% 감소)였고, HIS 블루그린 운영 전환 중 서비스 중단 기록은 없었습니다.",
     },
     {
       title: "365MC 운영 DB 이관",
-      subtitle: "Azure → NCP · MSSQL · 데이터 정합성",
+      subtitle: "Azure → NCP, MSSQL, 데이터 정합성",
       contribution: "운영 DB 6개를 Azure에서 NCP로 이관했습니다. PK 없는 테이블과 CDC 제약이 전환 과정의 핵심 난제였습니다.",
       technicalPoint: "조합키·건수·샘플 비교와 Python 자동 검증으로 데이터 정합성을 확인하고, 서비스 전환 전후 조회 경로를 점검했습니다.",
       impact: "6개 운영 DB를 서비스 중단 없이 전환했습니다.",
     },
     {
       title: "울주 AI센터 실시간 음성 AI (상담·영어회화·안내)",
-      subtitle: "Python · FastAPI · WebSocket · STT/LLM/TTS · Docker",
+      subtitle: "Python, FastAPI, WebSocket, STT/LLM/TTS, Docker",
       contribution: "상담 AI의 음성 엔진을 만들고, 같은 엔진으로 코쿤 부스의 AI 영어회화 키오스크와 센터 입구의 안내 AI 에이전트를 혼자 개발·배포·운영합니다.",
       technicalPoint: "공통 엔진은 STT Worker 할당·교체, 끼어들기, 중복 발화 방지를 맡습니다. 영어 부스는 PC별 로컬 GPU와 서명된 원격 업데이트·자동 롤백으로 무인 운영하고, 안내 AI는 대화 중 도구를 골라 가이드 영상·예약 QR·코쿤 현황·3D 길안내를 화면에 띄웁니다.",
       impact: "2026년 7~10월 코쿤 영어 부스 예약 이용 112건·인식 발화 8,917건, 상담 부스 대화 세션 584건을 기록했습니다. 발음 채점 통과율을 아이 56%→93%, 성인 59%→95%로 재보정했습니다.",
     },
     {
       title: "병원 데이터 처리 자동화",
-      subtitle: "Airflow · MSSQL · Oracle",
+      subtitle: "Airflow, MSSQL, Oracle",
       contribution: "반복하던 운영 SQL·스크립트 실행을 Airflow 기반 스케줄 작업으로 전환했습니다.",
       technicalPoint: "17개 DAG를 구성하고 batch/fetch 크기, 건수 불일치, 누락 행 기준을 점검할 수 있도록 실행 흐름과 로그를 정리했습니다.",
       impact: "반복 운영 작업을 자동화하고 MSSQL 서버의 용량 고갈 징후를 조기에 발견해 장애를 예방했습니다.",

@@ -7,7 +7,7 @@ type ContactProps = {
 
 export function Contact({ contacts }: ContactProps) {
   return (
-    <Section eyebrow="Contact" title="연락처">
+    <Section title="연락처">
       <div className="contact-panel">
         {contacts.map((contact) =>
           contact.href ? (

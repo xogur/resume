@@ -7,7 +7,7 @@ type ExperienceProps = {
 
 export function Experience({ items }: ExperienceProps) {
   return (
-    <Section eyebrow="Experience" title="경력">
+    <Section title="경력">
       <div className="timeline">
         {items.map((item) => (
           <article className="experience-item" key={`${item.company}-${item.period}`}>

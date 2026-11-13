@@ -46,7 +46,7 @@ export type PortfolioCase = {
   problem: string;
   decisions: string[];
   verification: string[];
-  message: string;
+  message?: string;
 };
 
 export type PortfolioFamily = {
@@ -59,7 +59,7 @@ export type PortfolioFamily = {
 export const portfolioFamilies = [
   {
     id: "realtime-family",
-    title: "실시간 음성 AI 제품군: 하나의 음성 엔진, 세 개의 서비스",
+    title: "실시간 음성 AI 제품군",
     lead: "상담 AI의 음성 엔진을 먼저 만들고, 같은 엔진 위에 영어회화 키오스크와 안내 AI를 올렸습니다. ==세 서비스 모두 혼자 개발·배포·운영합니다==. 공통 엔진은 첫 사례에서, 파생 서비스는 그 서비스에만 있는 문제로 설명합니다.",
     members: [
       { caseId: "realtime-voice", name: "비밀상담 AI", role: "공통 음성 엔진: 세션·STT Worker·끼어들기" },
@@ -73,7 +73,7 @@ export const portfolioCases = [
   {
     id: "farmsco-ai",
     area: "AI AGENT / DATA ACCESS",
-    title: "팜스코 영업 AI Agent: 모델의 답보다 실행 경계를 먼저 설계",
+    title: "팜스코 영업 AI 에이전트",
     lead: "직원의 질문 하나로 SAP 매출 조회, 격차 계산, 기술문서 검색, 차트, 보고서와 파일 생성까지 이어서 수행하는 Spring Boot AI 에이전트입니다. ==AI 모델은 온프레미스 GPU 서버에 vLLM으로 직접 띄웠습니다==. 에이전트가 도구를 고르고 순서를 정하되, ==실행 범위와 답변에 붙는 근거는 서버가 통제합니다==.",
     stack: ["Spring Boot", "LangGraph", "AI Agent", "Multi-Agent", "MCP", "vLLM", "온프레미스 GPU", "RAG", "Reranker", "Knowledge Graph", "Graphify", "Text-to-SQL", "PostgreSQL", "pgvector", "NCP"],
     diagram: "farmsco-agent",
@@ -162,7 +162,7 @@ export const portfolioCases = [
   {
     id: "his-cloud",
     area: "CLOUD SECURITY / SENSITIVE DATA",
-    title: "365MC 환자 사진: 저장소가 노출돼도 읽을 수 없고, 지워도 되찾는 구조",
+    title: "365MC 환자 사진 저장·조회 API",
     lead: "365MC HIS의 NCP 인프라 안에서 시술 전후 환자 사진을 저장·조회하는 중앙 사진 API를 설계·구축하고 운영합니다. 네트워크, 암호화, 키, 권한, 백업이 서로 다른 사고를 막도록 층을 나눴고, Blue/Green 무중단 배포와 실시간 보안 모니터링으로 운영합니다.",
     stack: ["FastAPI", "NCP", "KMS", "Object Storage", "MSSQL", "Blue/Green 무중단 배포", "보안 모니터링"],
     architecture: {
@@ -331,7 +331,7 @@ export const portfolioCases = [
   {
     id: "realtime-voice",
     area: "REALTIME AI / RESOURCE LIFECYCLE",
-    title: "비밀상담 AI: 음성 대화의 세션과 Worker 관리",
+    title: "비밀상담 AI의 실시간 음성 엔진",
     lead: "울주 AI센터 코쿤의 상시 개방 부스에서 운영하는 상담 AI(RealtimeVoiceChat)입니다. 브라우저의 음성 입력·재생부터 FastAPI WebSocket과 STT Worker 관리까지 연결했고, 이 엔진이 이후 두 서비스의 바탕이 됐습니다.",
     stack: ["Python", "FastAPI", "WebSocket", "STT", "LLM", "TTS"],
     flow: ["브라우저 발화", "WebSocket 세션", "STT Worker", "LLM·TTS", "음성 재생"],
@@ -352,7 +352,7 @@ export const portfolioCases = [
   {
     id: "realtime-english",
     area: "REALTIME AI / EDGE OPERATIONS",
-    title: "AI 영어회화 키오스크: 개발자 없는 부스에서 스스로 회복하는 음성 AI",
+    title: "AI 영어회화 키오스크",
     lead: "울주 AI센터 코쿤 부스 3곳에서 3D 아바타와 영어로 대화하는 학습 키오스크입니다. 자유대화·레벨별 수업·동화 퀴즈·발음 채점·평가 리포트와 예약 연동까지 혼자 만들고, ==현장 PC 배포와 원격 업데이트까지== 운영합니다.",
     stack: ["Python", "FastAPI", "WebSocket", "LangGraph", "Next.js", "three.js", "Docker", "WSL", "C#"],
     flow: ["예약 체크인", "한국어 음성 온보딩", "자유대화·수업·동화", "실시간 교정·발음 채점", "평가 리포트", "후속 예약"],
@@ -392,7 +392,7 @@ export const portfolioCases = [
   {
     id: "realtime-guide",
     area: "REALTIME AI / AGENT",
-    title: "안내 AI 키오스크: 대화로 화면을 움직이는 음성 에이전트",
+    title: "안내 AI 키오스크",
     lead: "울주 AI센터 입구의 세로형 키오스크에서 방문객의 질문을 듣고, ==음성 답변과 함께 필요한 화면을 직접 띄웁니다==. 프로그램을 물으면 가이드 영상을, 예약을 물으면 예약 QR과 코쿤 부스 현황을, 장소를 물으면 3D 평면도 길안내를 보여줍니다.",
     stack: ["Python", "FastAPI", "WebSocket", "Tool Calling", "Next.js", "three.js", "MediaPipe"],
     flow: ["얼굴 감지·인사", "말하는 사람 확인", "STT·시설명 보정", "에이전트 도구 선택", "음성 답변 + 화면 동작"],
@@ -431,7 +431,7 @@ export const portfolioCases = [
   {
     id: "ulju-reservation",
     area: "BACKEND / CLOUD",
-    title: "울주 AI센터: 예약 동시성과 클라우드 운영을 함께 책임지다",
+    title: "울주 AI센터 예약 서비스와 NCP 인프라",
     lead: "예약 화면과 NestJS API를 만들고 NCP 네트워크·배포 경로를 직접 구축해 운영하고 있습니다.",
     stack: ["NestJS", "Next.js", "TypeORM", "MySQL", "NCP"],
     diagram: "ulju-infra",
@@ -456,12 +456,12 @@ export const portfolioCases = [
       "확인한 예약 로그에는 ==동일 슬롯 중복 확정이 없었습니다==.",
     ],
     message:
-      "동시성 설계는 잠금 이름을 아는 것에서 끝나지 않습니다. 무엇을 잠가야 아직 존재하지 않는 예약도 안전하게 판단할 수 있는지가 핵심이었습니다.",
+      "무엇을 잠가야 아직 존재하지 않는 예약도 안전하게 판단할 수 있는지가 핵심이었습니다.",
   },
   {
     id: "query-performance",
     area: "PERFORMANCE / OBSERVABILITY",
-    title: "병원 조회 성능: 느린 구간을 분리해 고치다",
+    title: "병원 목록·사진 조회 성능 개선",
     lead: "병원 목록 SQL의 반복 조회와 사진 갤러리의 원본 일괄 로딩을 각각 추적해 개선했습니다.",
     stack: ["APM", "MSSQL", "Next.js", "사진 API"],
     problem:
@@ -475,13 +475,11 @@ export const portfolioCases = [
       "병원 목록 SQL 실행 시간은 ==0.88초에서 0.03~0.05초로== 줄었습니다.",
       "합성 사진 1건에서 목록 이미지 크기는 원본 ==1,082,115바이트에서 썸네일 122,689바이트로== 줄었습니다.",
     ],
-    message:
-      "반복 조회는 일괄 조회와 인덱스로, 큰 사진 전송은 용도에 맞는 썸네일과 요청 시점 조정으로 해결했습니다.",
   },
   {
     id: "db-migration",
     area: "DATA MIGRATION / CONSISTENCY",
-    title: "운영 DB 이관: 복사보다 정합성 확인을 먼저 두다",
+    title: "운영 DB 6개 Azure→NCP 이관",
     lead: "병원 운영 DB 6개를 Azure에서 NCP로 옮기며 PK가 없는 테이블과 CDC 제약을 별도 검증 대상으로 다뤘습니다.",
     stack: ["Azure", "NCP", "MSSQL", "Python"],
     problem:
@@ -497,7 +495,7 @@ export const portfolioCases = [
   {
     id: "batch-operations",
     area: "BATCH / OPERATIONS",
-    title: "병원 데이터 처리: 반복 작업을 관측 가능한 배치로 바꾸다",
+    title: "운영 SQL·스크립트의 Airflow 배치 전환",
     lead: "사람이 반복 실행하던 운영 SQL과 스크립트를 Airflow DAG로 옮기고, 결과를 점검할 기준을 함께 만들었습니다.",
     stack: ["Airflow", "MSSQL", "Oracle", "Python"],
     problem:

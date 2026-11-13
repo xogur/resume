@@ -21,9 +21,8 @@ export default function PortfolioPage() {
     <main className="page-shell portfolio-shell">
       <header className="portfolio-intro">
         <Link className="portfolio-back" href="/">
-          ← 이력서로 돌아가기
+          이력서로 돌아가기
         </Link>
-        <p className="eyebrow">Engineering Portfolio</p>
         <h1>기능 뒤에 있는 판단을 보여드립니다.</h1>
         <p className="portfolio-lead">
           저는 업무 AI와 예약·실시간 음성 서비스의 화면과 API를 만들고, 울주 AI센터와 365MC의 클라우드 인프라를 구축·운영했습니다.
@@ -47,7 +46,6 @@ export default function PortfolioPage() {
       </nav>
 
       <section className="portfolio-principles" aria-labelledby="portfolio-principles-title">
-        <p className="eyebrow">How I Work</p>
         <h2 id="portfolio-principles-title">제가 설계에서 먼저 확인하는 것</h2>
         <div>
           <article>
@@ -66,15 +64,13 @@ export default function PortfolioPage() {
       </section>
 
       <section className="portfolio-work" aria-labelledby="portfolio-work-title">
-        <p className="eyebrow">Selected Work</p>
         <h2 id="portfolio-work-title">프로젝트별 문제·선택·검증</h2>
-        {portfolioCases.map((project, index) => {
+        {portfolioCases.map((project) => {
           const family = portfolioFamilies.find((item) => item.members[0].caseId === project.id);
           return (
             <Fragment key={project.id}>
               {family ? (
                 <section className="portfolio-family" id={family.id} aria-labelledby={`${family.id}-title`}>
-                  <p className="eyebrow">Product Family</p>
                   <h3 id={`${family.id}-title`}>{family.title}</h3>
                   <p><Marked text={family.lead} /></p>
                   <ol>
@@ -92,12 +88,9 @@ export default function PortfolioPage() {
               ) : null}
               <article className="portfolio-case" id={project.id} aria-labelledby={`${project.id}-title`}>
                 <header>
-                  <p className="portfolio-case-number">{String(index + 1).padStart(2, "0")} / {project.area}</p>
                   <h3 id={`${project.id}-title`}>{project.title}</h3>
                   <p className="portfolio-case-lead"><Marked text={project.lead} /></p>
-                  <ul className="portfolio-tags" aria-label="사용 기술">
-                    {project.stack.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
+                  <p className="portfolio-tags">{project.stack.join(", ")}</p>
                 </header>
 
                 {project.flow ? (
@@ -228,12 +221,8 @@ export default function PortfolioPage() {
                       <h4>{pipeline.title}</h4>
                       <p className="portfolio-crypto-lead"><Marked text={pipeline.lead} /></p>
                       <ol className="portfolio-pipeline">
-                        {pipeline.steps.map((step, stepIndex) => (
+                        {pipeline.steps.map((step) => (
                           <li key={step.title}>
-                            <span className="portfolio-pipeline-meta">
-                              <b>{stepIndex + 1}</b>
-                              <em>{step.badge}</em>
-                            </span>
                             <strong>{step.title}</strong>
                             <Marked text={step.detail} />
                           </li>
@@ -280,8 +269,13 @@ export default function PortfolioPage() {
                       {project.verification.map((result) => <li key={result}><Marked text={result} /></li>)}
                     </ul>
                   </section>
+                  {project.message ? (
+                    <section>
+                      <h4>회고</h4>
+                      <p><Marked text={project.message} /></p>
+                    </section>
+                  ) : null}
                 </div>
-                <p className="portfolio-message"><strong>전달하고 싶은 메시지</strong><Marked text={project.message} /></p>
               </article>
             </Fragment>
           );
@@ -290,7 +284,7 @@ export default function PortfolioPage() {
 
       <footer className="portfolio-footer">
         <p>프로젝트를 더 자세히 이야기할 때는 구현 선택뿐 아니라 실패 경로와 측정 조건까지 함께 설명하겠습니다.</p>
-        <Link href="/">이력서로 돌아가기 →</Link>
+        <Link href="/">이력서로 돌아가기</Link>
       </footer>
     </main>
   );

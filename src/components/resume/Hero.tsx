@@ -5,7 +5,6 @@ import type { ContactLink, Highlight } from "@/data/resume";
 type HeroProps = {
   profile: {
     name: string;
-    role: string;
     currentPosition: string;
     tagline: string;
     photo: string;
@@ -20,15 +19,18 @@ export function Hero({ profile, contacts, highlights }: HeroProps) {
   return (
     <header className="hero">
       <div className="hero-copy">
-        <p className="hero-kicker">{profile.currentPosition}</p>
-        <h1>{profile.headline}</h1>
+        <h1>{profile.name}</h1>
+        <p className="hero-role">
+          {profile.currentPosition}, {profile.tagline}
+        </p>
+        <p className="hero-headline">{profile.headline}</p>
         <p className="hero-summary">{profile.summary}</p>
         <Link className="portfolio-entry-link" href="/portfolio">
-          프로젝트 설계·검증 자세히 보기 →
+          프로젝트 설계·검증 자세히 보기
         </Link>
       </div>
 
-      <aside className="hero-profile" aria-label="프로필 요약">
+      <aside className="hero-profile" aria-label="프로필 사진과 연락처">
         <Image
           src={profile.photo}
           alt={`${profile.name} 프로필 사진`}
@@ -37,14 +39,6 @@ export function Hero({ profile, contacts, highlights }: HeroProps) {
           priority
           className="portrait"
         />
-        <div>
-          <strong>{profile.name}</strong>
-          <p>
-            {profile.role}
-            <br />
-            {profile.tagline}
-          </p>
-        </div>
         <div className="contact-row" aria-label="주요 연락처">
           {contacts.map((contact) =>
             contact.href ? (
