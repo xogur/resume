@@ -2272,7 +2272,7 @@ a:visited {
   .project-card {
     grid-template-columns: 1fr;
     gap: 4px;
-    padding: 8px 0;
+    padding: 6px 0;
     break-inside: avoid;
   }
 
