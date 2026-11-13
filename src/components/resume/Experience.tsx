@@ -18,6 +18,7 @@ export function Experience({ items }: ExperienceProps) {
               </div>
               <span>{item.period}</span>
             </div>
+            {item.summary ? <p className="experience-summary">{item.summary}</p> : null}
             <ul>
               {item.bullets.map((bullet) => (
                 <li key={bullet}>{bullet}</li>

@@ -1940,6 +1940,12 @@ a:visited {
   white-space: nowrap;
 }
 
+.experience-summary {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .experience-item ul {
   display: grid;
   gap: 13px;

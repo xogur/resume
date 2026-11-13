@@ -1,4 +1,5 @@
 import { Contact } from "@/components/resume/Contact";
+import { Credentials } from "@/components/resume/Credentials";
 import { Experience } from "@/components/resume/Experience";
 import { Hero } from "@/components/resume/Hero";
 import { Projects } from "@/components/resume/Projects";
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience items={resume.experience} />
       <Projects projects={resume.projects} />
       <Skills groups={resume.skills} />
+      <Credentials groups={resume.credentials} />
       <Contact contacts={resume.contacts} />
     </main>
   );
