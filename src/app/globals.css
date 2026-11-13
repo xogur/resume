@@ -136,6 +136,12 @@
   color: #34414a;
 }
 
+.portfolio-family > .portfolio-press {
+  margin: -10px 0 22px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .portfolio-family ol {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -145,7 +151,7 @@
   list-style: none;
 }
 
-.portfolio-family a {
+.portfolio-family li a {
   display: block;
   height: 100%;
   padding: 12px 0 0;
@@ -160,18 +166,18 @@
   padding-top: 11px;
 }
 
-.portfolio-family a:hover strong {
+.portfolio-family li a:hover strong {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.portfolio-family a span {
+.portfolio-family li a span {
   display: block;
   color: var(--muted);
   font-size: 0.85rem;
 }
 
-.portfolio-family a strong {
+.portfolio-family li a strong {
   display: block;
   margin: 3px 0 4px;
   color: var(--text);
@@ -1991,6 +1997,24 @@ a:visited {
   color: #24303a;
   font-weight: 700;
   line-height: 1.55;
+}
+
+.project-summary .project-press {
+  font-size: 0.92rem;
+}
+
+.project-press a,
+.portfolio-press a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--soft);
+  text-underline-offset: 3px;
+}
+
+.project-press a:hover,
+.portfolio-press a:hover {
+  color: var(--text);
+  text-decoration-color: currentColor;
 }
 
 .skill-grid {

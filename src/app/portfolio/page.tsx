@@ -73,6 +73,19 @@ export default function PortfolioPage() {
                 <section className="portfolio-family" id={family.id} aria-labelledby={`${family.id}-title`}>
                   <h3 id={`${family.id}-title`}>{family.title}</h3>
                   <p><Marked text={family.lead} /></p>
+                  {family.press ? (
+                    <p className="portfolio-press">
+                      보도:{" "}
+                      {family.press.map((item, index) => (
+                        <span key={item.href}>
+                          {index > 0 ? ", " : null}
+                          <a href={item.href} target="_blank" rel="noopener noreferrer">
+                            {item.outlet}({item.date}) {item.title}
+                          </a>
+                        </span>
+                      ))}
+                    </p>
+                  ) : null}
                   <ol>
                     {family.members.map((member, memberIndex) => (
                       <li key={member.caseId}>

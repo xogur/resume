@@ -18,13 +18,37 @@ export type ExperienceItem = {
   bullets: string[];
 };
 
+export type PressLink = {
+  outlet: string;
+  date: string;
+  title: string;
+  href: string;
+};
+
 export type ProjectItem = {
   title: string;
   subtitle: string;
   contribution: string;
   technicalPoint: string;
   impact: string;
+  press?: PressLink[];
 };
+
+// 울주 AI센터 개관 보도. 경상일보 원문 주소를 찾지 못해 Daum 게재본을 쓴다.
+export const uljuPress: PressLink[] = [
+  {
+    outlet: "경상일보 르포",
+    date: "2026.7.3",
+    title: "[르포]울산 최초 '울주 AI 교육센터'를 가다",
+    href: "https://v.daum.net/v/20260703014823184",
+  },
+  {
+    outlet: "울산매일",
+    date: "2026.7.2",
+    title: "AI 배우고 체험까지…울산 첫 'AI 교육센터' 울주군에 개관",
+    href: "https://www.iusm.co.kr/news/articleView.html?idxno=1064854",
+  },
+];
 
 export type SkillGroup = {
   title: string;
@@ -81,7 +105,7 @@ export const resume = {
         "고객사가 외주로 맡긴 AI·백엔드 개발과 클라우드 운영을 프로젝트별로 혼자 맡고 있습니다.",
       bullets: [
         "팜스코·선우팜 AX: LangGraph·LangChain·Langfuse 기반 업무 AI 에이전트를 만듭니다. 팜스코에서는 SAP 매출과 기술문서를 RAG·Text-to-SQL로 연결하고 생성 SQL의 접근 범위를 제어했으며, 같은 구조로 선우팜 프로젝트를 수행하고 있습니다.",
-        "울주 AI센터: 센터의 서비스 대부분을 혼자 만들고 운영합니다. 상담·영어회화·안내 실시간 음성 AI 3종, 예약 화면·API, NCP 클라우드 인프라를 담당하며, 동시 예약은 트랜잭션과 방 잠금으로 처리해 2026년 8월 예약 294건을 중복 없이 운영했습니다.",
+        "울주 AI센터: 센터의 서비스 대부분을 혼자 만들고 운영합니다. 상담·영어회화·안내 실시간 음성 AI 3종과 AI DJ 라운지, 예약 화면·API, NCP 클라우드 인프라를 담당하며, 동시 예약은 트랜잭션과 방 잠금으로 처리해 2026년 8월 예약 294건을 중복 없이 운영했습니다.",
         "365MC: NCP 인프라를 보안 요구에 맞춰 재구성·운영하고 HIS 블루그린 배포, 사진관리 API 권한 검증·암호화 저장을 구축했습니다. APM으로 SQL 병목을 개선하고, 운영 DB 6개를 Azure에서 NCP로 서비스 중단 없이 이관했습니다.",
       ],
     },
@@ -100,9 +124,10 @@ export const resume = {
     {
       title: "울주 AI센터 실시간 음성 AI (상담·영어회화·안내)",
       subtitle: "Python, FastAPI, WebSocket, STT/LLM/TTS, Docker",
-      contribution: "상담 AI의 음성 엔진을 만들고, 같은 엔진으로 코쿤 부스의 AI 영어회화 키오스크와 센터 입구의 안내 AI 에이전트를 혼자 개발·배포·운영합니다.",
+      contribution: "상담 AI(AI 비밀상담소)의 음성 엔진을 만들고, 같은 엔진으로 코쿤 부스의 AI 영어회화 키오스크(프리토킹 with AI)와 센터 입구의 안내 AI 에이전트를 혼자 개발·배포·운영합니다.",
       technicalPoint: "공통 엔진은 STT Worker 할당·교체, 끼어들기, 중복 발화 방지를 맡습니다. 영어 부스는 PC별 로컬 GPU와 서명된 원격 업데이트·자동 롤백으로 무인 운영하고, 안내 AI는 대화 중 도구를 골라 가이드 영상·예약 QR·코쿤 현황·3D 길안내를 화면에 띄웁니다.",
       impact: "2026년 7~10월 코쿤 영어 부스 예약 이용 112건·인식 발화 8,917건, 상담 부스 대화 세션 584건을 기록했습니다. 발음 채점 통과율을 아이 56%→93%, 성인 59%→95%로 재보정했습니다.",
+      press: uljuPress,
     },
     {
       title: "365MC 조회 성능 개선",

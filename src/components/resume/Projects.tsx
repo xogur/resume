@@ -20,6 +20,19 @@ export function Projects({ projects }: ProjectsProps) {
                 {project.contribution} {project.technicalPoint}
               </p>
               <strong>성과: {project.impact}</strong>
+              {project.press ? (
+                <p className="project-press">
+                  보도:{" "}
+                  {project.press.map((item, index) => (
+                    <span key={item.href}>
+                      {index > 0 ? ", " : null}
+                      <a href={item.href} target="_blank" rel="noopener noreferrer" title={item.title}>
+                        {item.outlet}({item.date})
+                      </a>
+                    </span>
+                  ))}
+                </p>
+              ) : null}
             </div>
           </article>
         ))}

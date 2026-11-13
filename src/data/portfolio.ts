@@ -1,3 +1,5 @@
+import { uljuPress, type PressLink } from "./resume";
+
 export type PortfolioCase = {
   id: string;
   area: string;
@@ -54,6 +56,7 @@ export type PortfolioFamily = {
   title: string;
   lead: string;
   members: { caseId: string; name: string; role: string }[];
+  press?: PressLink[];
 };
 
 export const portfolioFamilies = [
@@ -66,6 +69,7 @@ export const portfolioFamilies = [
       { caseId: "realtime-english", name: "AI 영어회화 키오스크", role: "학습 채점과 현장 PC 무인 배포·업데이트" },
       { caseId: "realtime-guide", name: "안내 AI 키오스크", role: "대화로 영상·QR·예약 현황·길안내를 띄우는 에이전트" },
     ],
+    press: uljuPress,
   },
 ] satisfies PortfolioFamily[];
 
