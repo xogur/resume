@@ -13,7 +13,7 @@ function Marked({ text }: { text: string }) {
 export const metadata: Metadata = {
   title: "권태혁 | 프로젝트 포트폴리오",
   description:
-    "AI 백엔드, 클라우드 인프라(네이버 클라우드 NCP), 병원 HIS, 예약 동시성, 성능 개선, 데이터 이관의 문제·설계 선택·검증 결과를 정리한 포트폴리오입니다.",
+    "AI 에이전트·실시간 AI, 클라우드 인프라(네이버 클라우드 NCP), 병원 데이터·보안, 예약 동시성, 운영 안정성의 문제·설계 선택·검증 결과를 정리한 포트폴리오입니다.",
 };
 
 export default function PortfolioPage() {
@@ -25,7 +25,7 @@ export default function PortfolioPage() {
         </Link>
         <h1>기능 뒤에 있는 판단을 보여드립니다.</h1>
         <p className="portfolio-lead">
-          저는 업무 AI와 예약·실시간 음성 서비스의 화면과 API를 만들고, 울주 AI센터와 365MC의 클라우드 인프라를 구축·운영했습니다.
+          저는 업무 AI 에이전트, 실시간 음성·비전 AI 서비스, 병원 데이터 파이프라인을 만들고, 울주 AI센터와 365MC의 클라우드 인프라를 구축·운영합니다.
           이력서에 짧게 적은 성과 뒤에서 어떤 구조를 선택했고, 실패와 복구를 어떻게 다뤘는지 설명합니다.
         </p>
         <p className="portfolio-stance">
@@ -54,11 +54,11 @@ export default function PortfolioPage() {
           </article>
           <article>
             <h3>실패와 복구</h3>
-            <p>동시 요청, 작업자 준비 실패, 배포 전환, 데이터 이관에서 실패 후의 상태를 먼저 그립니다. 이전 버전과 데이터를 어떻게 되찾을지도 함께 정합니다.</p>
+            <p>동시 요청, Worker 준비 실패, 배포 전환, 데이터 이관에서 실패 후의 상태를 먼저 그립니다. 이전 버전과 데이터를 어떻게 되찾을지도 함께 정합니다.</p>
           </article>
           <article>
             <h3>측정의 범위</h3>
-            <p>SQL 실행 시간은 API 시간과 구분하고, 합성 사진의 파일 크기는 운영 비용과 구분합니다. 확인한 범위만 성과로 적습니다.</p>
+            <p>SQL 실행 시간은 API 시간과 구분하고, 로컬 시험 결과는 운영 실측과 구분합니다. 확인한 범위만 성과로 적습니다.</p>
           </article>
         </div>
       </section>
@@ -249,9 +249,7 @@ export default function PortfolioPage() {
                       <div className="portfolio-walkthrough">
                         <ol>
                           {project.walkthrough.steps.map((step) => <li key={step}><Marked text={step} /></li>)}
-                        </ol>
-                        {project.walkthrough.note ? <p><Marked text={project.walkthrough.note} /></p> : null}
-                      </div>
+                        </ol>                      </div>
                     </section>
                   ) : null}
                   {project.gallery ? (

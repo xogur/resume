@@ -93,7 +93,7 @@ export const resume = {
     "업무 AI 에이전트: LangGraph·RAG·Text-to-SQL 결합, 생성 SQL 접근 통제와 실제 질문 평가",
     "실시간 AI 백엔드: WebSocket 세션·STT Worker 수명주기, 스트리밍 TTS 첫 음성 1,019→137ms",
     "클라우드 인프라 설계·구축·운영: 네이버 클라우드(NCP) VPC·사설 서브넷·ALB·WAF·KMS, Blue/Green 무중단 배포",
-    "보안 운영: KMS 암호화 저장·삭제 불가 백업, 공격 탐지·IP 차단, 레거시 SQL Injection 단계 전환",
+    "보안 운영: 레거시 PHP HIS 대체, KMS 암호화 저장·삭제 불가 백업, 공격 탐지·IP 차단",
     "DB 정합성·성능: 예약 충돌 제어, 6개 DB 무중단 이관, 목록 SQL 0.88초→0.03~0.05초",
   ],
   experience: [
@@ -106,7 +106,7 @@ export const resume = {
       bullets: [
         "팜스코·선우팜 AX: LangGraph 기반 업무 AI 에이전트를 만듭니다. 팜스코는 SAP 매출과 기술문서를 RAG·Text-to-SQL로 연결했고, 선우팜 프로젝트는 진행 중입니다.",
         "울주 AI센터: 실시간 음성 AI 3종, AI DJ 라운지, 방문자 카운팅·체류 분석, 예약 서비스와 이를 받치는 네이버 클라우드 인프라를 개발·운영합니다.",
-        "365MC: 네이버 클라우드 인프라와 HIS 블루그린 배포, 사진 API, Airflow ETL을 운영합니다. 레거시 PHP 서버에서 웹셸·백도어를 찾아 격리하고 SQL Injection 진입점을 값 바인딩으로 단계 전환했으며, 지점 PC 상태는 Spring Boot·Prometheus·Grafana로 감시해 장애를 카카오워크로 알립니다.",
+        "365MC: 보안·안정성 문제가 있던 레거시 PHP HIS를 사진 저장 API(FastAPI)와 직원용 HIS 웹(Next.js)으로 재구성해 대체하고, 네이버 클라우드 인프라와 Airflow ETL을 운영합니다. 지점 PC 상태는 Spring Boot·Prometheus·Grafana로 감시해 장애를 카카오워크로 알립니다.",
       ],
     },
   ] satisfies ExperienceItem[],
@@ -117,7 +117,7 @@ export const resume = {
       contribution:
         "SAP 매출 데이터와 기술문서의 근거가 분리돼 있던 영업 질의 흐름을 하나의 AI 백엔드로 연결했습니다.",
       technicalPoint:
-        "매출 질의는 제한된 뷰·읽기 전용 DB 계정의 Text-to-SQL로 처리하고 생성 SQL을 구문 검증했습니다. 승인된 제품·문서 매핑이 있을 때만 RAG 문서 근거를 결합했습니다. 문서 검색은 PostgreSQL의 pgvector와 Reranker로 구성하고, 모델은 온프레미스 GPU의 vLLM으로 동시 요청과 자원 할당을 관리했습니다.",
+        "매출 질의는 제한된 뷰·읽기 전용 DB 계정의 Text-to-SQL로 처리하고 생성 SQL을 구문 검증했습니다. 루트 에이전트가 하위 에이전트(매출 조회·문서 검색·지식그래프)에 일을 맡기고 정리된 결과만 받아 컨텍스트가 커지지 않게 했습니다. 승인된 제품·문서 매핑이 있을 때만 RAG 문서 근거를 결합했습니다. 문서 검색은 PostgreSQL의 pgvector와 Reranker로 구성하고, 모델은 온프레미스 GPU의 vLLM으로 동시 요청과 자원 할당을 관리했습니다.",
       impact:
         "SAP 매출원장 146,044행과 기술문서 근거를 한 답변에 연결했습니다. 실제 팜스코 직원 평가 질문 1,182문항의 답변이 업무 담당자의 검수 기준을 충족해 승인받았습니다.",
     },
@@ -158,9 +158,9 @@ export const resume = {
       impact: "2026년 8월 예약 294건을 동일 슬롯 중복 확정 없이 처리했습니다. 접속로그 수집 중단 장애를 Nginx 로그 형식 변경까지 추적해 누락 194,344건을 재적재·검증하고, 실패가 바로 드러나도록 상태 점검을 추가했습니다.",
     },
     {
-      title: "365MC HIS 보안 전환·무중단 배포·DB 이관",
+      title: "365MC 레거시 HIS 재구성·무중단 배포·DB 이관",
       subtitle: "Next.js, FastAPI, 네이버 클라우드(NCP), Blue/Green, MSSQL",
-      contribution: "365MC 네이버 클라우드 인프라를 보안 요구에 맞춰 재구성·운영하고, HIS 사진관리 기능을 별도 API로 분리했으며, 운영 DB 6개를 Azure에서 네이버 클라우드로 이관했습니다.",
+      contribution: "사진 저장부터 직원 화면까지 처리하던 레거시 PHP HIS를 보안·안정성 문제로 걷어내고, 사진 저장 API(FastAPI)와 직원용 HIS 웹(Next.js)으로 재구성했습니다. 운영 DB 6개는 Azure에서 네이버 클라우드로 이관했습니다.",
       technicalPoint: "외부 진입점은 ALB(TLS 1.2 이상)만 두고 사진 API는 인터넷 송신이 막힌 사설 서브넷에 두었습니다. 서버는 Access Key 없이 Server Role 임시 자격(AWS IAM Role 대응)으로 KMS·Object Storage(30일 삭제 불가 백업)에 접근하고, HIS·사진 API는 Blue/Green으로 전환합니다. DB 이관은 PK 없는 테이블·CDC 제약을 조합키·건수·샘플 비교 Python 검증으로 확인했습니다.",
       impact: "사진 API의 Blue/Green 전환·롤백 중 1,982초 동안 사진 조회 940건이 모두 성공했고, HIS 블루그린 전환과 6개 운영 DB 이관도 서비스 중단 없이 진행했습니다.",
     },
