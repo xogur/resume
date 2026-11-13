@@ -106,7 +106,7 @@ export const resume = {
       bullets: [
         "팜스코·선우팜 AX: LangGraph·LangChain·Langfuse 기반 업무 AI 에이전트를 만듭니다. 팜스코에서는 SAP 매출과 기술문서를 RAG·Text-to-SQL로 연결하고 생성 SQL의 접근 범위를 제어했으며, 같은 구조로 선우팜 프로젝트를 수행하고 있습니다.",
         "울주 AI센터: 센터의 서비스 대부분을 혼자 만들고 운영합니다. 상담·영어회화·안내 실시간 음성 AI 3종과 AI DJ 라운지, 예약 화면·API, NCP 클라우드 인프라를 담당하며, 동시 예약은 트랜잭션과 방 잠금으로 처리해 2026년 8월 예약 294건을 중복 없이 운영했습니다.",
-        "365MC: NCP 인프라를 보안 요구에 맞춰 재구성·운영하고 HIS 블루그린 배포, 사진관리 API 권한 검증·암호화 저장을 구축했습니다. APM으로 SQL 병목을 개선하고, 운영 DB 6개를 Azure에서 NCP로 서비스 중단 없이 이관했습니다.",
+        "365MC: NCP 인프라를 보안 요구에 맞춰 재구성·운영하고 HIS 블루그린 배포, 사진관리 API 권한 검증·암호화 저장을 구축했습니다. APM으로 SQL 병목을 개선하고, 운영 DB 6개를 Azure에서 NCP로 서비스 중단 없이 이관했습니다. 여러 DB와 파일 서버에 흩어진 병원 데이터는 Airflow ETL로 모아 정제·적재합니다.",
       ],
     },
   ] satisfies ExperienceItem[],
@@ -128,6 +128,13 @@ export const resume = {
       technicalPoint: "공통 엔진은 STT Worker 할당·교체, 끼어들기, 중복 발화 방지를 맡습니다. 영어 부스는 PC별 로컬 GPU와 서명된 원격 업데이트·자동 롤백으로 무인 운영하고, 안내 AI는 대화 중 도구를 골라 가이드 영상·예약 QR·코쿤 현황·3D 길안내를 화면에 띄웁니다.",
       impact: "2026년 7~10월 코쿤 영어 부스 예약 이용 112건·인식 발화 8,917건, 상담 부스 대화 세션 584건을 기록했습니다. 발음 채점 통과율을 아이 56%→93%, 성인 59%→95%로 재보정했습니다.",
       press: uljuPress,
+    },
+    {
+      title: "365MC 병원 데이터 ETL 파이프라인",
+      subtitle: "Airflow, Python, Oracle, MSSQL, MySQL",
+      contribution: "Oracle·MSSQL·MySQL·Azure DB와 파일 서버에 흩어진 병원 데이터를 모아 정제하고, 의료진이 HIS와 APPA·LAMS 화면에서 쓰는 형태로 적재합니다. 21개 DAG를 혼자 작성·운영합니다.",
+      technicalPoint: "추출은 원천 컬럼과 대상 타입을 확인한 뒤 진행하고, Azure 동기화는 마지막 적재 지점 이후 행만 옮기는 증분 방식으로 처리합니다. 범위를 벗어난 측정값은 결측으로 정제해 집계·예측 입력으로 씁니다. 적재는 스테이징 테이블을 거쳐 한 트랜잭션에서 교체하고, 0행·급감이면 교체를 건너뛰어 기존 데이터를 지킵니다.",
+      impact: "정제한 데이터로 수술 후 증상 예측은 10분마다, 마취 안전·지방흡입량·지방이식 예측과 일일 마감은 매일 적재합니다(2026년 11월 12일 실행 기준 마취 안전 4,652건·지방흡입량 42,755건). 일 단위 예측 배치 3종은 로그가 남은 최근 한 달간 실패·재시도가 없었고, MSSQL 서버의 용량 고갈 징후도 조기에 발견했습니다.",
     },
     {
       title: "365MC 조회 성능 개선",
@@ -157,13 +164,6 @@ export const resume = {
       technicalPoint: "조합키·건수·샘플 비교와 Python 자동 검증으로 데이터 정합성을 확인하고, 서비스 전환 전후 조회 경로를 점검했습니다.",
       impact: "6개 운영 DB를 서비스 중단 없이 전환했습니다.",
     },
-    {
-      title: "병원 데이터 처리 자동화",
-      subtitle: "Airflow, MSSQL, Oracle",
-      contribution: "반복하던 운영 SQL·스크립트 실행을 Airflow 기반 스케줄 작업으로 전환했습니다.",
-      technicalPoint: "17개 DAG를 구성하고 batch/fetch 크기, 건수 불일치, 누락 행 기준을 점검할 수 있도록 실행 흐름과 로그를 정리했습니다.",
-      impact: "반복 운영 작업을 자동화하고 MSSQL 서버의 용량 고갈 징후를 조기에 발견해 장애를 예방했습니다.",
-    },
   ] satisfies ProjectItem[],
   skills: [
     {
@@ -180,7 +180,7 @@ export const resume = {
     },
     {
       title: "Data & Batch",
-      skills: ["MSSQL", "PostgreSQL", "MySQL", "Airflow"],
+      skills: ["MSSQL", "PostgreSQL", "MySQL", "Oracle", "Airflow"],
     },
     {
       title: "Cloud & Observability",
