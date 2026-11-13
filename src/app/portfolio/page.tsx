@@ -13,7 +13,7 @@ function Marked({ text }: { text: string }) {
 export const metadata: Metadata = {
   title: "권태혁 | 프로젝트 포트폴리오",
   description:
-    "AI 백엔드, NCP 클라우드 인프라, 병원 HIS, 예약 동시성, 성능 개선, 데이터 이관의 문제·설계 선택·검증 결과를 정리한 포트폴리오입니다.",
+    "AI 백엔드, 클라우드 인프라(네이버 클라우드 NCP), 병원 HIS, 예약 동시성, 성능 개선, 데이터 이관의 문제·설계 선택·검증 결과를 정리한 포트폴리오입니다.",
 };
 
 export default function PortfolioPage() {

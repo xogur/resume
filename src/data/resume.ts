@@ -60,11 +60,11 @@ export const resume = {
     name: "권태혁",
     role: "AX Backend Developer",
     currentPosition: "UXROOM AX 백엔드 개발자",
-    tagline: "고객사 AI·인프라 프로젝트 단독 수행",
+    tagline: "고객사 AI·클라우드 인프라 프로젝트 단독 수행",
     photo: "/profile.jpg",
     headline: "업무 AI를 만들고\n운영 인프라까지 책임집니다",
     summary:
-      "고객사(팜스코·선우팜·365MC·울주 AI센터)가 맡긴 AI·백엔드 개발과 클라우드 운영을 혼자 수행합니다. LangGraph 기반 업무 AI 에이전트와 실시간 음성 대화 AI를 만들고, 실제 직원 질문으로 답변 품질을 검증했습니다. 울주 AI센터와 365MC의 NCP 인프라도 직접 설계·구축·운영하며, 사설망·권한 경계·암호화 저장·무중단 배포로 보안 요구를 맞췄습니다.",
+      "고객사(팜스코·선우팜·365MC·울주 AI센터)가 맡긴 AI·백엔드 개발과 클라우드 운영을 혼자 수행합니다. LangGraph 기반 업무 AI 에이전트와 실시간 음성 대화 AI를 만들고, 실제 직원 질문으로 답변 품질을 검증했습니다. 울주 AI센터와 365MC의 클라우드 인프라(네이버 클라우드 NCP)도 직접 설계·구축·운영하며, 사설망·권한 경계·암호화 저장·무중단 배포로 보안 요구를 맞췄습니다.",
   },
   contacts: [
     { label: "전화", value: "010-9072-1938", href: "tel:01090721938" },
@@ -92,7 +92,7 @@ export const resume = {
   strengths: [
     "업무 AI 에이전트: LangGraph·RAG·Text-to-SQL 결합, 생성 SQL 접근 통제와 실제 질문 평가",
     "실시간 AI 백엔드: WebSocket 세션·STT Worker 수명주기 관리",
-    "울주 AI센터·365MC NCP 인프라 직접 설계·구축·운영",
+    "울주 AI센터·365MC 클라우드 인프라(네이버 클라우드 NCP) 직접 설계·구축·운영",
     "보안·비용 설계: KMS 키 보호·암호화 저장·변경분 백업",
     "DB 정합성·성능: 예약 충돌 제어·6개 DB 이관·조회 병목 개선",
   ],
@@ -105,8 +105,8 @@ export const resume = {
         "고객사가 외주로 맡긴 AI·백엔드 개발과 클라우드 운영을 프로젝트별로 혼자 맡고 있습니다.",
       bullets: [
         "팜스코·선우팜 AX: LangGraph·LangChain·Langfuse 기반 업무 AI 에이전트를 만듭니다. 팜스코에서는 SAP 매출과 기술문서를 RAG·Text-to-SQL로 연결하고 생성 SQL의 접근 범위를 제어했으며, 같은 구조로 선우팜 프로젝트를 수행하고 있습니다.",
-        "울주 AI센터: 센터의 서비스 대부분을 혼자 만들고 운영합니다. 상담·영어회화·안내 실시간 음성 AI 3종과 AI DJ 라운지, 방문자 카운팅·체류 분석, 예약 화면·API, NCP 클라우드 인프라를 담당하며, 동시 예약은 트랜잭션과 방 잠금으로 처리해 2026년 8월 예약 294건을 중복 없이 운영했습니다.",
-        "365MC: NCP 인프라를 보안 요구에 맞춰 재구성·운영하고 HIS 블루그린 배포, 사진관리 API 권한 검증·암호화 저장을 구축했습니다. APM으로 SQL 병목을 개선하고, 운영 DB 6개를 Azure에서 NCP로 서비스 중단 없이 이관했습니다. 여러 DB와 파일 서버에 흩어진 병원 데이터는 Airflow ETL로 모아 정제·적재합니다.",
+        "울주 AI센터: 센터의 서비스 대부분을 혼자 만들고 운영합니다. 상담·영어회화·안내 실시간 음성 AI 3종과 AI DJ 라운지, 방문자 카운팅·체류 분석, 예약 화면·API, 네이버 클라우드(NCP) 인프라를 담당하며, 동시 예약은 트랜잭션과 방 잠금으로 처리해 2026년 8월 예약 294건을 중복 없이 운영했습니다.",
+        "365MC: 네이버 클라우드(NCP) 인프라를 보안 요구에 맞춰 재구성·운영하고 HIS 블루그린 배포, 사진관리 API 권한 검증·암호화 저장을 구축했습니다. APM으로 SQL 병목을 개선하고, 운영 DB 6개를 Azure에서 네이버 클라우드로 서비스 중단 없이 이관했습니다. 여러 DB와 파일 서버에 흩어진 병원 데이터는 Airflow ETL로 모아 정제·적재합니다.",
       ],
     },
   ] satisfies ExperienceItem[],
@@ -159,15 +159,15 @@ export const resume = {
     },
     {
       title: "울주 AI센터 예약 서비스·클라우드 구축",
-      subtitle: "NestJS, Next.js, TypeORM, NCP",
-      contribution: "울주 AI센터의 NCP 인프라와 예약 화면·API·배포 경로를 직접 구축하고 운영합니다.",
-      technicalPoint: "NCP 네트워크·방화벽과 이전 빌드 복구 경로를 구성하고, 방을 비관적 쓰기 잠금으로 조회해 동시 요청 중 한 건만 확정합니다.",
+      subtitle: "NestJS, Next.js, TypeORM, 네이버 클라우드(NCP)",
+      contribution: "울주 AI센터의 네이버 클라우드(NCP) 인프라와 예약 화면·API·배포 경로를 직접 구축하고 운영합니다.",
+      technicalPoint: "클라우드 네트워크·방화벽과 이전 빌드 복구 경로를 구성하고, 방을 비관적 쓰기 잠금으로 조회해 동시 요청 중 한 건만 확정합니다.",
       impact: "2026년 8월 웹 요청 372,121건, 예약 294건을 동일 슬롯 중복 확정 없이 처리했습니다.",
     },
     {
       title: "365MC HIS 보안 전환·무중단 배포·DB 이관",
-      subtitle: "Next.js, FastAPI, NCP, Blue/Green, Azure → NCP MSSQL",
-      contribution: "365MC NCP 인프라를 보안 요구에 맞춰 재구성·운영하고, HIS 사진관리 기능을 별도 API로 분리했으며, 운영 DB 6개를 Azure에서 NCP로 이관했습니다.",
+      subtitle: "Next.js, FastAPI, 네이버 클라우드(NCP), Blue/Green, MSSQL",
+      contribution: "365MC 클라우드 인프라(네이버 클라우드 NCP)를 보안 요구에 맞춰 재구성·운영하고, HIS 사진관리 기능을 별도 API로 분리했으며, 운영 DB 6개를 Azure에서 네이버 클라우드로 이관했습니다.",
       technicalPoint: "사설망 사진 API에 업무·지점별 권한 검증·감사 로그와 KMS 키 보호 암호화 저장을 적용하고, HIS는 트래픽 전환·이전 버전 복구가 가능하게 구성했습니다. DB 이관은 PK 없는 테이블과 CDC 제약을 조합키·건수·샘플 비교와 Python 자동 검증으로 확인했습니다.",
       impact: "사진 API의 미인가 조회 거부를 확인했고, 합성 5MB 사진 암호화 저장 크기를 6.67MB→5.00MB로 줄였습니다. HIS 블루그린 전환·DB 이관은 서비스 중단 없이 진행했습니다.",
     },
@@ -191,7 +191,7 @@ export const resume = {
     },
     {
       title: "Cloud & Observability",
-      skills: ["NCP", "Object Storage", "KMS", "Azure", "Docker", "GitHub Actions", "Prometheus", "Grafana"],
+      skills: ["네이버 클라우드(NCP)", "Object Storage", "KMS", "Azure", "Docker", "GitHub Actions", "Prometheus", "Grafana"],
     },
   ] satisfies SkillGroup[],
   credentials: [

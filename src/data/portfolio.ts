@@ -79,7 +79,7 @@ export const portfolioCases = [
     area: "AI AGENT / DATA ACCESS",
     title: "팜스코 영업 AI 에이전트",
     lead: "직원의 질문 하나로 SAP 매출 조회, 격차 계산, 기술문서 검색, 차트, 보고서와 파일 생성까지 이어서 수행하는 Spring Boot AI 에이전트입니다. ==AI 모델은 온프레미스 GPU 서버에 vLLM으로 직접 띄웠습니다==. 에이전트가 도구를 고르고 순서를 정하되, ==실행 범위와 답변에 붙는 근거는 서버가 통제합니다==.",
-    stack: ["Spring Boot", "LangGraph", "AI Agent", "Multi-Agent", "MCP", "vLLM", "온프레미스 GPU", "RAG", "Reranker", "Knowledge Graph", "Graphify", "Text-to-SQL", "PostgreSQL", "pgvector", "NCP"],
+    stack: ["Spring Boot", "LangGraph", "AI Agent", "Multi-Agent", "MCP", "vLLM", "온프레미스 GPU", "RAG", "Reranker", "Knowledge Graph", "Graphify", "Text-to-SQL", "PostgreSQL", "pgvector", "네이버 클라우드(NCP)"],
     diagram: "farmsco-agent",
     problem:
       "매출은 정형 데이터의 집계가 필요하고 제품 설명은 문서의 맥락이 필요했습니다. 두 근거를 한 답변에 연결하려면 편리함만큼 위험도 커집니다. ==생성 SQL이 허용 범위를 벗어나거나, 무관한 문서를 그럴듯한 근거로 붙이는 경우==를 서버에서 막아야 했습니다.",
@@ -168,8 +168,8 @@ export const portfolioCases = [
     id: "his-cloud",
     area: "CLOUD SECURITY / SENSITIVE DATA",
     title: "365MC 환자 사진 저장·조회 API",
-    lead: "365MC HIS의 NCP 인프라 안에서 시술 전후 환자 사진을 저장·조회하는 중앙 사진 API를 설계·구축하고 운영합니다. 네트워크, 암호화, 키, 권한, 백업이 서로 다른 사고를 막도록 층을 나눴고, Blue/Green 무중단 배포와 실시간 보안 모니터링으로 운영합니다.",
-    stack: ["FastAPI", "NCP", "KMS", "Object Storage", "MSSQL", "Blue/Green 무중단 배포", "보안 모니터링"],
+    lead: "365MC HIS의 네이버 클라우드(NCP) 인프라 안에서 시술 전후 환자 사진을 저장·조회하는 중앙 사진 API를 설계·구축하고 운영합니다. 네트워크, 암호화, 키, 권한, 백업이 서로 다른 사고를 막도록 층을 나눴고, Blue/Green 무중단 배포와 실시간 보안 모니터링으로 운영합니다.",
+    stack: ["FastAPI", "네이버 클라우드(NCP)", "KMS", "Object Storage", "MSSQL", "Blue/Green 무중단 배포", "보안 모니터링"],
     architecture: {
       title: "사진 보관 구조",
       zones: [
@@ -485,9 +485,9 @@ export const portfolioCases = [
   {
     id: "ulju-reservation",
     area: "BACKEND / CLOUD",
-    title: "울주 AI센터 예약 서비스와 NCP 인프라",
-    lead: "예약 화면과 NestJS API를 만들고 NCP 네트워크·배포 경로를 직접 구축해 운영하고 있습니다.",
-    stack: ["NestJS", "Next.js", "TypeORM", "MySQL", "NCP"],
+    title: "울주 AI센터 예약 서비스와 클라우드 인프라",
+    lead: "예약 화면과 NestJS API를 만들고 네이버 클라우드(NCP)의 네트워크·배포 경로를 직접 구축해 운영하고 있습니다.",
+    stack: ["NestJS", "Next.js", "TypeORM", "MySQL", "네이버 클라우드(NCP)"],
     diagram: "ulju-infra",
     problem:
       "같은 방의 같은 시간대에 요청이 동시에 들어오면, 두 요청 모두 기존 예약이 없다고 읽을 수 있습니다. 아직 예약 행이 없는 슬롯에서는 예약 행 자체를 잠그는 방식만으로 충돌을 막기 어렵습니다.",
@@ -502,7 +502,7 @@ export const portfolioCases = [
     },
     decisions: [
       "트랜잭션 안에서 방 레코드를 ==비관적 쓰기 잠금==으로 조회한 뒤 시간 겹침을 검사했습니다. 충돌하는 요청은 확정 전에 거부해 화면과 DB가 다른 상태를 말하지 않도록 했습니다.",
-      "예약 기능과 함께 NCP 네트워크·방화벽, 배포 경로와 이전 빌드 복구 경로를 구성했습니다. 기능 변경을 운영에 올리는 과정까지 개발 범위로 다뤘습니다.",
+      "예약 기능과 함께 클라우드 네트워크·방화벽, 배포 경로와 이전 빌드 복구 경로를 구성했습니다. 기능 변경을 운영에 올리는 과정까지 개발 범위로 다뤘습니다.",
       "화면에서 예약 결과를 확인하는 흐름과 서버의 충돌 응답을 연결했습니다. 사용자가 실패를 다시 판단할 수 있도록 결과를 숨기지 않는 방향입니다.",
     ],
     verification: [
@@ -533,16 +533,16 @@ export const portfolioCases = [
   {
     id: "db-migration",
     area: "DATA MIGRATION / CONSISTENCY",
-    title: "운영 DB 6개 Azure→NCP 이관",
-    lead: "병원 운영 DB 6개를 Azure에서 NCP로 옮기며 PK가 없는 테이블과 CDC 제약을 별도 검증 대상으로 다뤘습니다.",
-    stack: ["Azure", "NCP", "MSSQL", "Python"],
+    title: "운영 DB 6개 Azure→네이버 클라우드 이관",
+    lead: "병원 운영 DB 6개를 Azure 클라우드에서 네이버 클라우드(NCP)로 옮기며 PK가 없는 테이블과 CDC 제약을 별도 검증 대상으로 다뤘습니다.",
+    stack: ["Azure", "네이버 클라우드(NCP)", "MSSQL", "Python"],
     problem:
       "DB 이관에서 가장 위험한 순간은 파일 복사가 끝났다고 판단하는 시점입니다. PK가 없거나 변경 추적에 제약이 있는 테이블은 단순 건수 일치만으로 누락·중복을 설명하기 어렵습니다.",
     decisions: [
       "테이블 특성에 맞춰 조합키를 만들고 건수·샘플을 비교하는 Python 검증 흐름을 구성했습니다. ==같은 수의 행이 있다는 사실과 같은 데이터라는 판단을 분리==했습니다.",
       "서비스 전환 전후 조회 경로를 점검했습니다. 데이터 이동, 검증, 실제 사용 경로 전환을 각각 확인 대상으로 두었습니다.",
     ],
-    verification: ["==운영 DB 6개를 서비스 중단 없이== Azure에서 NCP로 전환했습니다."],
+    verification: ["==운영 DB 6개를 서비스 중단 없이== Azure에서 네이버 클라우드로 전환했습니다."],
     message:
       "마이그레이션을 완료했다고 말하려면 새 DB가 만들어졌다는 사실보다, 업무가 기대한 데이터를 같은 의미로 읽는지 설명할 수 있어야 합니다.",
   },

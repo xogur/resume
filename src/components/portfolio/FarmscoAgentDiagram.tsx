@@ -407,7 +407,7 @@ export function FarmscoAgentDiagram() {
         <Arrow area="a1" label="질문" back="SSE" />
 
         <section className="fad-box" data-tone="spring" style={{ gridArea: "spring" }}>
-          <h5>Spring Boot <small>업무 서버 · NCP</small></h5>
+          <h5>Spring Boot <small>업무 서버 · 네이버 클라우드</small></h5>
           <div className="fad-chips">
             <Chip icon="shield">인증·권한</Chip>
             <Chip icon="stream">SSE 단계 스트리밍</Chip>

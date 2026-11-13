@@ -161,14 +161,14 @@ function NodeBox({ node }: { node: Node }) {
 export function UljuInfraDiagram() {
   return (
     <figure className="uid" aria-labelledby="uid-title">
-      <figcaption id="uid-title">인프라 구성도 · NCP 공공기관용(Gov)</figcaption>
+      <figcaption id="uid-title">클라우드 인프라 구성도 · 네이버 클라우드(NCP) 공공기관용(Gov)</figcaption>
       <p className="uid-hint">옆으로 밀어서 보세요</p>
       <div className="uid-scroll">
         <svg
           className="uid-svg"
           viewBox="0 0 1080 700"
           role="img"
-          aria-label="울주 AI센터 NCP 인프라 구성도. 예약 요청은 ALB와 WAF를 거쳐 사설 서브넷의 웹·API 서버와 MySQL로 간다. 부스 키오스크는 공개 서브넷의 실시간 음성 AI 서버에 연결되고 이 서버는 MySQL에 접속한다. 운영자는 Bastion 또는 SSL VPN으로만 사설 서버에 접속한다. 사설 서버의 외부 송신은 NAT Gateway로만 나간다. WAF 관제 업체는 지정 IP에서 WAF를 관리하고 로그를 받는다."
+          aria-label="울주 AI센터 네이버 클라우드(NCP) 인프라 구성도. 예약 요청은 ALB와 WAF를 거쳐 사설 서브넷의 웹·API 서버와 MySQL로 간다. 부스 키오스크는 공개 서브넷의 실시간 음성 AI 서버에 연결되고 이 서버는 MySQL에 접속한다. 운영자는 Bastion 또는 SSL VPN으로만 사설 서버에 접속한다. 사설 서버의 외부 송신은 NAT Gateway로만 나간다. WAF 관제 업체는 지정 IP에서 WAF를 관리하고 로그를 받는다."
         >
           <defs>
             {flows.map((flow) => (
