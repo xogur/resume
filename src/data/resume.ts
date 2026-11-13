@@ -89,11 +89,11 @@ export const resume = {
   projects: [
     {
       title: "팜스코 AX 영업 AI Agent",
-      subtitle: "Spring Boot, LangGraph, RAG, Text-to-SQL",
+      subtitle: "Spring Boot, LangGraph, vLLM, RAG, Text-to-SQL",
       contribution:
         "SAP 매출 데이터와 기술문서의 근거가 분리돼 있던 영업 질의 흐름을 하나의 AI 백엔드로 연결했습니다.",
       technicalPoint:
-        "매출 질의는 제한된 뷰·읽기 전용 DB 계정의 Text-to-SQL로 처리하고 생성 SQL을 구문 검증했습니다. 승인된 제품·문서 매핑이 있을 때만 RAG 문서 근거를 결합했습니다.",
+        "매출 질의는 제한된 뷰·읽기 전용 DB 계정의 Text-to-SQL로 처리하고 생성 SQL을 구문 검증했습니다. 승인된 제품·문서 매핑이 있을 때만 RAG 문서 근거를 결합했습니다. 문서 검색은 PostgreSQL의 pgvector와 Reranker로 구성하고, 모델은 온프레미스 GPU의 vLLM으로 동시 요청과 자원 할당을 관리했습니다.",
       impact:
         "SAP 매출원장 146,044행과 기술문서 근거를 한 답변에 연결했습니다. 실제 팜스코 직원 평가 질문 1,182문항의 답변이 업무 담당자의 검수 기준을 충족해 승인받았습니다.",
     },
@@ -143,7 +143,7 @@ export const resume = {
   skills: [
     {
       title: "AI Backend",
-      skills: ["Spring AI", "LangGraph", "LangChain", "Langfuse", "RAG", "Text-to-SQL", "STT/LLM/TTS"],
+      skills: ["Spring AI", "LangGraph", "LangChain", "Langfuse", "vLLM", "MCP", "RAG", "pgvector", "Reranker", "Text-to-SQL", "STT/LLM/TTS"],
     },
     {
       title: "Core Backend",
