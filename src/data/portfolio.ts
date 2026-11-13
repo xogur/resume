@@ -437,7 +437,7 @@ export const portfolioCases = [
     id: "ulju-reservation",
     area: "BACKEND / CLOUD",
     title: "울주 AI센터 예약 서비스와 NCP 인프라",
-    lead: "예약 화면과 NestJS API를 만들고 NCP 네트워크·배포 경로를 직접 구축해 운영하고 있습니다.",
+    lead: "예약 화면과 NestJS API를 만들고 NCP 네트워크·배포 경로를 직접 구축해 운영하고 있습니다. 같은 센터 1층의 AI DJ 라운지(터치 화면에서 컨셉과 보컬을 고르면 AI가 곡을 만들어 주는 체험 키오스크)도 만들었습니다.",
     stack: ["NestJS", "Next.js", "TypeORM", "MySQL", "NCP"],
     diagram: "ulju-infra",
     problem:
